@@ -27,7 +27,7 @@ public class Dice : MonoBehaviour
     // Update is called once per frame
     void OnMouseDown()
     {
-        if(coroutineAllowed)
+        if(coroutineAllowed && GameControl.rollDice)
         StartCoroutine("RollTheDice");
     }
     IEnumerator RollTheDice()
@@ -42,9 +42,9 @@ public class Dice : MonoBehaviour
         }
         value = randomDiceSide +1;
         GameControl.remainStep = value;
-        Debug.Log("value = " + value);
         playerToMove.moveAllowed = true;
-        GameControl.moving = true;
+        GameControl.chooseAction = true;
+        GameControl.rollDice = false;
         
     }
 

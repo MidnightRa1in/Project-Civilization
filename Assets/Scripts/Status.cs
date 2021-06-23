@@ -2,23 +2,47 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Status : MonoBehaviour
+public class Status : ScriptableObject
 {
-    enum landStatus
+    public enum Development
+    {
+        Village,
+        Town,
+        City,
+        IndustrialArea,
+    }
+
+    public enum Building
+    {
+        MineralFacility,
+        MaterialFacility,
+        FishingVillage,
+        Farm,
+        Market,
+        TradeCenter,
+        FinanceCenter,
+        ArtField,
+        ReligiousField,
+        Workshop,
+        Harbor,
+        University,
+
+    }
+    public enum LandStatus
     {
         Volcano,
         Desert,
         Forest,
         Lake,
-        River,
+        Riverside,
         Plateau,
-        Valley,
         Plain,
         Island,
         Seashore,
         Swamp,
         Savanna,
         Mountain,
+        Cave,
     }
     // Start is called before the first frame update
     void Start()

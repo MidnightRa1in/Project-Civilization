@@ -5,10 +5,14 @@ using UnityEngine;
 public class Player : MonoBehaviour
 {
     public bool moveAllowed;
+    public bool developAllowed;
     public Land locationNow;
     [SerializeField]
     private Land Clotho1AsSpawn;
-    private Land[] lands;
+    public Land[] lands;
+    public Resource owningResources;
+    public Resource resourcesPerTurn;
+    public Resource consumptionPerTurn;
     // Start is called before the first frame update
     void Start()
     {        
