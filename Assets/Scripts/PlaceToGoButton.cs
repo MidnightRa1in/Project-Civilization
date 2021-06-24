@@ -28,7 +28,6 @@ public class PlaceToGoButton : MonoBehaviour
         GameControl.moving = true;
         //UI.DestoryButton();
         UI.gameObject.SetActive(false);
-        
-
+       
     }
 }

@@ -45,6 +45,7 @@ public class Dice : MonoBehaviour
         playerToMove.moveAllowed = true;
         GameControl.chooseAction = true;
         GameControl.rollDice = false;
+        Debug.Log(playerToMove.locationNow.landBuilding.Count);
         
     }
 

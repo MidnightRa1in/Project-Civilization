@@ -1,12 +1,9 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.UI;
 
-public class ChooseActionUI : MonoBehaviour
+public class ChooseBuildDevUI : MonoBehaviour
 {
-
-    
     // Start is called before the first frame update
     void Start()
     {
@@ -16,20 +13,18 @@ public class ChooseActionUI : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-
+        
     }
-
-    public void moveClicked()
+     public void buildClicked()
     {
-        GameControl.moving = true;
-        GameControl.chooseAction = false;
+        GameControl.building = true;
+        GameControl.chooseBuildDev = false;
         gameObject.SetActive(false);
     }
-    public void developClicked()
+    public void developLandClicked()
     {
-        GameControl.chooseBuildDev = true;
-        GameControl.chooseAction = false;
+        GameControl.developingLand = true;
+        GameControl.chooseBuildDev = false;
         gameObject.SetActive(false);
     }
 }
-

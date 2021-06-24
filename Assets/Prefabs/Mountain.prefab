@@ -100,4 +100,4 @@ MonoBehaviour:
   status: 11
   development: 0
   buildings: 
-  resources: {fileID: 11400000, guid: 18a306deead55ae4bb99d03ac6f3a08d, type: 2}
+  resources: {fileID: 0}

@@ -96,7 +96,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   landID: 
-  landStatus: {fileID: 0}
   nearbyLands:
   - {fileID: 0}
   - {fileID: 0}
+  status: 0
+  development: 0
+  buildings: 
+  resources: {fileID: 11400000, guid: a31df68a1b989e148aa323986f255abf, type: 2}

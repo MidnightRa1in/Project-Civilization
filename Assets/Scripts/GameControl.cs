@@ -14,16 +14,25 @@ public class GameControl : MonoBehaviour
     [SerializeField]
     private ChooseActionUI chooseAcrionAI;
     [SerializeField]
-    private DevelopUI developUI;
+    private ChooseBuildDevUI chooseBuildDevUI;
+    [SerializeField]
+    private BuildUI buildUI;
     [SerializeField]
     private Dice dice;
     
 
     public static int remainStep;
+
     public static bool chooseAction;
     public static bool moving;
     public static bool developing;
+
     public static bool rollDice;
+
+    public static bool chooseBuildDev;
+    public static bool building;
+    public static bool developingLand;
+    public static bool buildingOptions;
 
 
 
@@ -36,7 +45,11 @@ public class GameControl : MonoBehaviour
         developing = false;
         chooseAction = false;
         rollDice = true;
-        foreach(GameObject land in lands)
+        chooseBuildDev = false;
+        building = false;
+        developingLand = false;
+        buildingOptions = false;
+        foreach (GameObject land in lands)
         {
             land.GetComponent<Land> ().landID = land.name;
         }
@@ -62,9 +75,13 @@ public class GameControl : MonoBehaviour
 
             }
         }
-        if(developing)
+        if(chooseBuildDev)
         {
-            Develop();
+            ChooseBuildDev();
+        }
+        if(building)
+        {
+            Build();
         }
     }
     public void MovePlayer(Player playerToMove)
@@ -77,14 +94,20 @@ public class GameControl : MonoBehaviour
 
     }
 
-    public void Develop()
-    {
-        developUI.gameObject.SetActive(true);
-        developing = false;
-    }
 
     public void ChooseAction()
     {
         chooseAcrionAI.gameObject.SetActive(true);
+    }
+
+    public void ChooseBuildDev()
+    {
+        chooseBuildDevUI.gameObject.SetActive(true);
+    }
+
+    public void Build()
+    {
+        buildUI.gameObject.SetActive(true);
+        buildUI.Activated();
     }
 }

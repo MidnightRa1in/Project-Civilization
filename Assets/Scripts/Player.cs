@@ -10,9 +10,7 @@ public class Player : MonoBehaviour
     [SerializeField]
     private Land Clotho1AsSpawn;
     public Land[] lands;
-    public Resource owningResources;
-    public Resource resourcesPerTurn;
-    public Resource consumptionPerTurn;
+
     // Start is called before the first frame update
     void Start()
     {        
