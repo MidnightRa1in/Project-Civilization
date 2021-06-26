@@ -109,5 +109,6 @@ public class GameControl : MonoBehaviour
     {
         buildUI.gameObject.SetActive(true);
         buildUI.Activated();
+        building = false;
     }
 }

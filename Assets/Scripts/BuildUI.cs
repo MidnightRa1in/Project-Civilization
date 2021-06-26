@@ -21,6 +21,7 @@ public class BuildUI : MonoBehaviour
     {
         gameObject.SetActive(false);
         buttons = new List<GameObject>();
+        resourcePanel = new List<GameObject>();
     }
 
     // Update is called once per frame
@@ -43,7 +44,6 @@ public class BuildUI : MonoBehaviour
         for (int i = 0; i < player.locationNow.landBuilding.Count; i++)
         {
             GameObject button = Instantiate(previewButton) as GameObject;
-            button.GetComponent<Button>();
             button.SetActive(true);
             button.GetComponent<PreviewButton>().SetText(player.locationNow.landBuilding[i]);
             button.transform.SetParent(previewButton.transform.parent, false);

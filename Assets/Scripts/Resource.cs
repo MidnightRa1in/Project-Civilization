@@ -5,22 +5,7 @@ using UnityEngine;
 
 public static class Resource
 {
-    public static Dictionary<string, Dictionary<string, int>> allBuilding = new Dictionary<string, Dictionary<string, int>>()
-    {
-        //["MineralFacility"] = { },
-        //["MaterialFacility"] = { },
-        //["FishingVillage"] = { },
-        //["Farm"] = { },
-        //["Market"] = { },
-        //["TradeCenter"] = { },
-        //["FinanceCenter"] = { },
-        //["ArtField"] = { },
-        //["ReligiousField"] = { },
-        //["Workshop"] = { },
-        //["Harbor"] = { },
-        ["University"] = university
-
-    };
+    
 
     public static Dictionary<string, int> mountain = new Dictionary<string, int>()
     {
@@ -46,6 +31,23 @@ public static class Resource
         ["product"] = 2,
 
         ["development"] = 2,
+    };
+
+    public static Dictionary<string, Dictionary<string, int>> allBuilding = new Dictionary<string, Dictionary<string, int>>()
+    {
+        //["MineralFacility"] = { },
+        //["MaterialFacility"] = { },
+        //["FishingVillage"] = { },
+        //["Farm"] = { },
+        //["Market"] = { },
+        //["TradeCenter"] = { },
+        //["FinanceCenter"] = { },
+        //["ArtField"] = { },
+        //["ReligiousField"] = { },
+        //["Workshop"] = { },
+        //["Harbor"] = { },
+        ["University"] = university
+
     };
 
 }
