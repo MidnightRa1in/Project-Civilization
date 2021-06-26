@@ -3,22 +3,22 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class PreviewButton : MonoBehaviour
+public class NextStageButton : MonoBehaviour
 {
     [SerializeField]
     private Text buttonName;
     [SerializeField]
-    private BuildUI buildUI;
+    private DevelopUI developUI;
     [SerializeField]
     private ConfirmButton confirm;
-
     private Player player;
-    private landBuilding buildingName;
+
+    private landDevelopment developName;
     // Start is called before the first frame update
     void Start()
     {
         player = GameObject.Find("Player").GetComponent<Player>();
-        
+
     }
 
     // Update is called once per frame
@@ -26,19 +26,20 @@ public class PreviewButton : MonoBehaviour
     {
         
     }
-    public void SetText(landBuilding newOne)
+    public void SetText(landDevelopment res)
     {
-        buttonName.text = newOne.ToString();
-        buildingName = newOne;
+        buttonName.text = res.ToString();
+        developName = res;        
     }
 
-    public void buildingClicked()
+    public void developmentClicked()
     {
         Dictionary<resource, int> next = new Dictionary<resource, int>();
-        next = player.locationNow.Preview(buttonName.text);
-        buildUI.GeneratePreviewPanel(next);
+        next = player.locationNow.PreviewDevelop(developName);
+        developUI.GeneratePreviewPanel(next);
         confirm.loadNext(next);
-        confirm.loadConstructedBuilding(buildingName);
+        confirm.loadNextStage(developName);
+        Debug.Log(developName);
 
     }
 }

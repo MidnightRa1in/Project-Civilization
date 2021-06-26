@@ -18,16 +18,28 @@ public class GameControl : MonoBehaviour
     [SerializeField]
     private BuildUI buildUI;
     [SerializeField]
+    private DevelopUI developUI;
+    [SerializeField]
     private Dice dice;
-    
+
+    [SerializeField]
+    private GameObject developOptionButton;
+    [SerializeField]
+    private GameObject buildOptionButton;
+
+    [SerializeField]
+    private Text countingRound;
+
 
     public static int remainStep;
+    public static int rounds;
 
     public static bool chooseAction;
     public static bool moving;
     public static bool developing;
 
     public static bool rollDice;
+    public static bool coroutineAllowed;
 
     public static bool chooseBuildDev;
     public static bool building;
@@ -36,11 +48,14 @@ public class GameControl : MonoBehaviour
 
 
 
+
+
     // Start is called before the first frame update
     void Start()
     {
         player = GameObject.Find("Player").GetComponent<Player>();
         remainStep = 0;
+        rounds = 0;
         moving = false;
         developing = false;
         chooseAction = false;
@@ -58,6 +73,7 @@ public class GameControl : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        countingRound.text = "Round  " + rounds.ToString();
         if (chooseAction)
         {            
             ChooseAction();
@@ -69,9 +85,9 @@ public class GameControl : MonoBehaviour
             {
                 placeToGo.gameObject.SetActive(false);
                 player.moveAllowed = false;
-                dice.coroutineAllowed = true;
+                
                 moving = false;
-                rollDice = true;
+                EndofTurn();
 
             }
         }
@@ -82,6 +98,10 @@ public class GameControl : MonoBehaviour
         if(building)
         {
             Build();
+        }
+        if(developingLand)
+        {
+            Develop();
         }
     }
     public void MovePlayer(Player playerToMove)
@@ -98,11 +118,22 @@ public class GameControl : MonoBehaviour
     public void ChooseAction()
     {
         chooseAcrionAI.gameObject.SetActive(true);
+        chooseAction = false;
     }
 
     public void ChooseBuildDev()
     {
+        if (player.locationNow.development.nextDevelopment.Count == 0)
+        {
+            developOptionButton.SetActive(false);
+        }
+        if (player.locationNow.buildingsCount == 3)
+        {
+            buildOptionButton.SetActive(false);
+        }
         chooseBuildDevUI.gameObject.SetActive(true);
+        chooseBuildDev = false;
+        
     }
 
     public void Build()
@@ -110,5 +141,18 @@ public class GameControl : MonoBehaviour
         buildUI.gameObject.SetActive(true);
         buildUI.Activated();
         building = false;
+    }
+    public void Develop()
+    {
+        developUI.gameObject.SetActive(true);
+        developUI.Activated();
+        developingLand = false;
+    }
+    
+    public static void EndofTurn()
+    {
+        coroutineAllowed = true;
+        rollDice = true;
+        rounds++;
     }
 }

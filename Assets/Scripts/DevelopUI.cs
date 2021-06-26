@@ -2,20 +2,17 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
-using System;
 
-public class BuildUI : MonoBehaviour
+public class DevelopUI : MonoBehaviour
 {
     [SerializeField]
-    private GameObject previewButton;
+    private GameObject nextStageButton;
     [SerializeField]
     private GameObject previewPanel;
 
     private Player player;
     private List<GameObject> buttons;
     private List<GameObject> resourcePanel;
-
-
     // Start is called before the first frame update
     void Start()
     {
@@ -27,9 +24,10 @@ public class BuildUI : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-
+        
     }
-    public void Activated()
+
+    public void Activated()//產生預覽下一狀態按鈕
     {
         player = GameObject.Find("Player").GetComponent<Player>();
         if (buttons.Count > 0)
@@ -49,18 +47,20 @@ public class BuildUI : MonoBehaviour
             resourcePanel.Clear();
         }
 
-        Array buildings = Enum.GetValues(typeof(landBuilding));
-
-        foreach(landBuilding build in buildings)
+        for (int i = 0; i < player.locationNow.development.nextDevelopment.Count; i++)
         {
-            GameObject button = Instantiate(previewButton) as GameObject;
+            GameObject button = Instantiate(nextStageButton) as GameObject;
             button.SetActive(true);
-            button.GetComponent<PreviewButton>().SetText(build);
-            button.transform.SetParent(previewButton.transform.parent, false);
+            button.GetComponent<NextStageButton>().SetText(player.locationNow.development.nextDevelopment[i].stage);
+
+            Debug.Log(player.locationNow.development.stage + "now");
+            Debug.Log(player.locationNow.development.nextDevelopment[i].stage + "next");
+
+            button.transform.SetParent(nextStageButton.transform.parent, false);
             buttons.Add(button);
         }
     }
-    public void GeneratePreviewPanel(Dictionary<resource, int> previewRes)
+    public void GeneratePreviewPanel(Dictionary<resource, int> previewRes)//產生預覽畫面
     {
         if (resourcePanel.Count > 0)
         {
@@ -71,16 +71,14 @@ public class BuildUI : MonoBehaviour
             resourcePanel.Clear();
         }
 
-        foreach(var resource in previewRes)
+        foreach (var resource in previewRes)
         {
             GameObject panel = Instantiate(previewPanel) as GameObject;
             panel.SetActive(true);
-            panel.GetComponent<PreviewPanel>().SetText(resource.Key.ToString(),resource.Value.ToString());
+            panel.GetComponent<PreviewPanel>().SetText(resource.Key.ToString(), resource.Value.ToString());
             panel.transform.SetParent(previewPanel.transform.parent, false);
             resourcePanel.Add(panel);
         }
 
     }
-
-
 }

@@ -8,15 +8,17 @@ public class Player : MonoBehaviour
     public bool developAllowed;
     public Land locationNow;
     [SerializeField]
-    private Land Clotho1AsSpawn;
+    private Land Athena11AsSpawn;
     public Land[] lands;
+    public List<Land> llands;
 
     // Start is called before the first frame update
     void Start()
     {        
-        transform.position = Clotho1AsSpawn.transform.position;
+        transform.position = Athena11AsSpawn.transform.position;
         moveAllowed = false;
-        locationNow = Clotho1AsSpawn;
+        locationNow = Athena11AsSpawn;
+        llands = new List<Land>();
     }
 
     // Update is called once per frame

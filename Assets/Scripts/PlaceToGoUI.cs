@@ -52,7 +52,7 @@ public class PlaceToGoUI : MonoBehaviour
         {
             GameObject button = Instantiate(placeToGoButton) as GameObject;
             button.SetActive(true);
-            button.GetComponent<PlaceToGoButton>().SetText(playerToMove.locationNow.nearbyLands[i].LandID);
+            button.GetComponent<PlaceToGoButton>().SetText(playerToMove.locationNow.nearbyLands[i].landID);
             button.GetComponent<PlaceToGoButton>().SetLand(playerToMove.locationNow.nearbyLands[i]);
             button.transform.SetParent(placeToGoButton.transform.parent, false);
             buttons.Add(button);

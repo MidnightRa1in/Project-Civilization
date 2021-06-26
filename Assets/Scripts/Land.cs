@@ -3,7 +3,9 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEditor;
+using System;
 
+//Land、Building、Development種類
 public enum landStatus
 {
     Volcano,
@@ -19,22 +21,22 @@ public enum landStatus
     Savanna,
     Mountain,
     Cave,
-} 
-//public enum landBuilding
-//{
-//    MineralFacility,
-//    MaterialFacility,
-//    FishingVillage,
-//    Farm,
-//    Market,
-//    TradeCenter,
-//    FinanceCenter,
-//    ArtField,
-//    ReligiousField,
-//    Workshop,
-//    Harbor,
-//    University,
-//}
+}
+public enum landBuilding
+{
+    MineralFacility,
+    MaterialFacility,
+    FishingVillage,
+    Farm,
+    Market,
+    TradeCenter,
+    FinanceCenter,
+    ArtField,
+    ReligiousField,
+    Workshop,
+    Harbor,
+    University,
+}
 public enum landDevelopment
 {
     Undeveloped,
@@ -43,113 +45,149 @@ public enum landDevelopment
     City,
     IndustrialArea,
 }
+
+public enum resource
+{
+    water,
+    food,
+    mineral,
+    material,
+    money,
+    labor,
+    product,
+
+    development,
+
+}
 public class Land : MonoBehaviour
 {
-    public List<string> landBuilding = new List<string>() {
-        "MineralFacility",
-        "MaterialFacility",
-        "FishingVillage",
-        "Farm",
-        "Market",
-        "TradeCenter",
-        "FinanceCenter",
-        "ArtField",
-        "ReligiousField",
-        "Workshop",
-        "Harbor",
-        "University",
-    };
+    //public List<string> landBuildings = new List<string>() {
+    //    "MineralFacility",
+    //    "MaterialFacility",
+    //    "FishingVillage",
+    //    "Farm",
+    //    "Market",
+    //    "TradeCenter",
+    //    "FinanceCenter",
+    //    "ArtField",
+    //    "ReligiousField",
+    //    "Workshop",
+    //    "Harbor",
+    //    "University",
+    //};
     public string landID;
     public Land[] nearbyLands;
-    public string LandID
-    {
-        get { return landID.ToString(); }
-    }
     public landStatus status;
-    public landDevelopment development;
-    public List<string> buildings;
-    private SerializedObject landSerObj;
-    private SerializedProperty landSerProp;
-    public Dictionary<string, int> landResource;
+    
+    public Development development;//土地開發狀態
+    public List<landBuilding> buildings;//土地上的建築
+    public int buildingsCount;
+    public Dictionary<resource, int> landResource;//每回合土地的資源變化
 
+    private Development developmentTree;//土地狀態演進順序
 
     // Start is called before the first frame update
-    void Start()
+    public void Start()
     {
-        buildings = new List<string>();
-        development = landDevelopment.Undeveloped;
-        landResource = new Dictionary<string, int>(Resource.mountain);
-
+        buildings = new List<landBuilding>(3);
+        buildingsCount = 0;
+        development = InitialTree();
+        landResource = new Dictionary<resource, int>(Mountain.resources);
     }
 
     // Update is called once per frame
-    void Update()
+    public void Update()
     {
         
     }
 
-    public Dictionary<string, int> Preview(string buildingName)
+    public Dictionary<resource, int> Preview(string buildingName)//建造建築物預覽
     {
-        Dictionary<string, int> previewRes = new Dictionary<string, int>();
+        Dictionary<resource, int> previewRes = new Dictionary<resource, int>();
         foreach (var building in Resource.allBuilding[buildingName])
         {
             foreach(var land in landResource)
             {
-                if (building.Value != 0 && land.Key == building.Key)
+                               
+                if (land.Key == building.Key)
                 {
                     previewRes.Add(building.Key, building.Value + land.Value);
                 }
             }
             
         }
-        return previewRes;
-
-        //landSerObj = new UnityEditor.SerializedObject(resources);
-        //landSerProp = landSerObj.GetIterator();
         
-
-        //Resource newRes = ScriptableObject.CreateInstance<Resource>();
-        //SerializedObject newSerObj = new UnityEditor.SerializedObject(newRes);
-        //SerializedObject sourceSerObj = new UnityEditor.SerializedObject(sourceRes);
-
-        //SerializedProperty newSerProp = newSerObj.GetIterator();
-        //SerializedProperty sourceSerProp = sourceSerObj.GetIterator();
-
-        //while (sourceSerProp.NextVisible(true))
-        //{
-        //    while (newSerProp.NextVisible(true))
-        //    {
-
-        //        if (newSerProp.name != "m_Script" && sourceSerProp.intValue != 0)
-        //        {
-        //            while (landSerProp.NextVisible(true))
-        //            {
-        //                if (sourceSerProp.name == newSerProp.name && sourceSerProp.name == landSerProp.name)
-        //                {
-        //                    newSerProp.intValue = landSerProp.intValue + sourceSerProp.intValue;
-        //                    Debug.Log(newSerProp.intValue);
-
-        //                }
-        //            }
-        //        }                                       
-
-        //    }
-
-        //}
-            //landSerProp.NextVisible(true);
-            //for(int i = 0; i < landSerProp.CountRemaining(); i++)
-            //{
-            //    if(sourceSerProp.GetArrayElementAtIndex(i).intValue != 0)
-            //    {
-            //        newSerProp.GetArrayElementAtIndex(i).intValue = landSerProp.GetArrayElementAtIndex(i).intValue + sourceSerProp.GetArrayElementAtIndex(i).intValue;
-            //        Debug.Log(newSerProp.GetArrayElementAtIndex(i).intValue);
-            //    }
-            //}
+        return previewRes;
 
     }
 
-    
+    public Dictionary<resource, int> PreviewDevelop(landDevelopment developName)//開發土地預覽
+    {
+        Dictionary<resource, int> previewRes = new Dictionary<resource, int>();
+        foreach (var resource in Resource.allDevelopment[developName])
+        {
+            foreach (var land in landResource)
+            {
+                if (land.Key == resource.Key)
+                {
+                    previewRes.Add(resource.Key, resource.Value + land.Value);
+                }
+            }
+        }
+        return previewRes;
+    }
 
- 
+    public virtual void Build(Dictionary<resource, int> next)//建造
+    {
+        landResource = next;
+    }
+
+    //public virtual void OccurEvent()
+    //{
+
+    //}
+    private void SetNextStage(landDevelopment[] stage)//設定土地演進的下一個階段
+    {
+        Development setTothis = new Development();
+        setTothis = developmentTree;
+
+        while (setTothis.nextDevelopment.Count != 0)
+        {
+            setTothis = setTothis.nextDevelopment[0];
+        }
+        for (int i = 0; i < stage.Length; i++)
+        {
+            Development newDev = new Development(stage[i]);
+            setTothis.nextDevelopment.Add(newDev);
+        }
+
+    }
+    public Development InitialTree()//土地狀態演進的資料結構
+    {
+        developmentTree = new Development(landDevelopment.Undeveloped);
+        SetNextStage(new landDevelopment[] { landDevelopment.Village });
+        SetNextStage(new landDevelopment[] { landDevelopment.Town });
+        SetNextStage(new landDevelopment[] { landDevelopment.City, landDevelopment.IndustrialArea });
+        return developmentTree;
+    }
+
+    public void SetDevelopment(landDevelopment target)
+    {
+        foreach(Development nextOne in development.nextDevelopment)
+        {
+            if(nextOne.stage == target)
+            {
+                development = nextOne;
+            }
+        }
+    }
+
+
+
+
+
+
+
+
 
 }

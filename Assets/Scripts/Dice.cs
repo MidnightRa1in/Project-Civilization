@@ -6,7 +6,7 @@ public class Dice : MonoBehaviour
 {
     private Sprite[] diceSides;
     private SpriteRenderer rend;
-    public bool coroutineAllowed;
+    
     private static int value;
     private Player playerToMove;
     public static int Value
@@ -21,18 +21,18 @@ public class Dice : MonoBehaviour
         rend = GetComponent<SpriteRenderer>();
         diceSides = Resources.LoadAll<Sprite>("Dice/");
         rend.sprite = diceSides[5];
-        coroutineAllowed = true;
+        GameControl.coroutineAllowed = true;
     }
 
     // Update is called once per frame
     void OnMouseDown()
     {
-        if(coroutineAllowed && GameControl.rollDice)
+        if(GameControl.coroutineAllowed && GameControl.rollDice)
         StartCoroutine("RollTheDice");
     }
     IEnumerator RollTheDice()
     {
-        coroutineAllowed = false;
+        GameControl.coroutineAllowed = false;
         int randomDiceSide = 0;
         for(int i =0; i <=10; i++)
         {
@@ -45,8 +45,8 @@ public class Dice : MonoBehaviour
         playerToMove.moveAllowed = true;
         GameControl.chooseAction = true;
         GameControl.rollDice = false;
-        Debug.Log(playerToMove.locationNow.landBuilding.Count);
-        
+
+
     }
 
 
