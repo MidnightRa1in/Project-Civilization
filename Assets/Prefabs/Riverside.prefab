@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 5687968933555585058}
   - component: {fileID: 6614931897827000327}
   - component: {fileID: 612084779986631459}
+  - component: {fileID: -4443203678251039827}
   m_Layer: 0
   m_Name: Riverside
   m_TagString: Untagged
@@ -101,6 +102,7 @@ MonoBehaviour:
   status: 0
   buildings: 
   buildingsCount: 0
+  landStatusUI: {fileID: 0}
 --- !u!61 &612084779986631459
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -127,3 +129,21 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 1, y: 1}
   m_EdgeRadius: 0
+--- !u!114 &-4443203678251039827
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5842110456094579406}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0c412134e72e04640b20e10c72725db8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  landID: 
+  nearbyLands: []
+  status: 0
+  buildings: 
+  buildingsCount: 0
+  landStatusUI: {fileID: 0}

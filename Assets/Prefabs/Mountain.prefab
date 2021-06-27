@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 4481926439092968300}
   - component: {fileID: 4453621940597773868}
   - component: {fileID: -7824178609471754622}
+  - component: {fileID: 2400487618858376355}
   m_Layer: 0
   m_Name: Mountain
   m_TagString: Untagged
@@ -101,6 +102,7 @@ MonoBehaviour:
   status: 11
   buildings: 
   buildingsCount: 0
+  landStatusUI: {fileID: 0}
 --- !u!61 &-7824178609471754622
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -127,3 +129,21 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 1, y: 1}
   m_EdgeRadius: 0
+--- !u!114 &2400487618858376355
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8059329042211291052}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6acad3091dd72dc4bb3f78279d206f07, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  landID: 
+  nearbyLands: []
+  status: 0
+  buildings: 
+  buildingsCount: 0
+  landStatusUI: {fileID: 0}

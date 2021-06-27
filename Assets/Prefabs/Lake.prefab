@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 6347935994528338329}
   - component: {fileID: 3162391123609810826}
   - component: {fileID: -2339578532463205562}
+  - component: {fileID: -6076079014978794521}
   m_Layer: 0
   m_Name: Lake
   m_TagString: Untagged
@@ -101,6 +102,7 @@ MonoBehaviour:
   status: 0
   buildings: 
   buildingsCount: 0
+  landStatusUI: {fileID: 0}
 --- !u!61 &-2339578532463205562
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -127,3 +129,21 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 1, y: 1}
   m_EdgeRadius: 0
+--- !u!114 &-6076079014978794521
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2028408525167026492}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 84134bfc943081e429432dd9a1be9d3c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  landID: 
+  nearbyLands: []
+  status: 0
+  buildings: 
+  buildingsCount: 0
+  landStatusUI: {fileID: 0}

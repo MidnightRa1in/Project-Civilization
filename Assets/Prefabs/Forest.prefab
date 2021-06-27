@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 9121256238789556716}
   - component: {fileID: -9135555687701579886}
   - component: {fileID: -8206697839096797403}
+  - component: {fileID: -2426744453902768259}
   m_Layer: 0
   m_Name: Forest
   m_TagString: Untagged
@@ -101,6 +102,7 @@ MonoBehaviour:
   status: 0
   buildings: 
   buildingsCount: 0
+  landStatusUI: {fileID: 0}
 --- !u!61 &-8206697839096797403
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -127,3 +129,21 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 1, y: 1}
   m_EdgeRadius: 0
+--- !u!114 &-2426744453902768259
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7989359129012731107}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4db12643728075046b35d47d7b5c2163, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  landID: 
+  nearbyLands: []
+  status: 0
+  buildings: 
+  buildingsCount: 0
+  landStatusUI: {fileID: 0}
