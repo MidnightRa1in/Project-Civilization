@@ -17,6 +17,7 @@ public class Riverside : Land
             [resource.labor] = 0,
             [resource.product] = 0,
         };
+        status = landStatus.Riverside;
     }
     private new void Update()
     {

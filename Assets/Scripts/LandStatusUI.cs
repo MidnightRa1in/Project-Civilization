@@ -50,7 +50,10 @@ public class LandStatusUI : MonoBehaviour
         landName.text = land.landID;
         landStatus.text = land.status.ToString();
         landDevelopment.text = land.development.stage.ToString();
-        for(int i = 0; i < land.buildings.Count; i++)
+        landBuilding1.text = "";
+        landBuilding2.text = "";
+        landBuilding3.text = "";
+        for (int i = 0; i < land.buildings.Count; i++)
         {
             switch(i)
             {

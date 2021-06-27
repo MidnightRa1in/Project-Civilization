@@ -126,6 +126,8 @@ public class GameControl : MonoBehaviour
 
     public void ChooseBuildDev()
     {
+        developOptionButton.SetActive(true);
+        buildOptionButton.SetActive(true);
         if (player.locationNow.development.nextDevelopment.Count == 0)
         {
             developOptionButton.SetActive(false);

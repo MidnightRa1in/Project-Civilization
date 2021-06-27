@@ -17,6 +17,7 @@ public class Plain : Land
             [resource.labor] = 1,
             [resource.product] = 0,
         };
+        status = landStatus.Plain;
     }
     private new void Update()
     {
@@ -27,7 +28,7 @@ public class Plain : Land
     public override void Build(Dictionary<resource, int> next)
     {
         base.Build(next);
-        base.resources[resource.money] += 1;
-        base.resources[resource.food] += 1;
+        resources[resource.money] += 1;
+        resources[resource.food] += 1;
     }
 }

@@ -10,8 +10,8 @@ GameObject:
   m_Component:
   - component: {fileID: 7385253230802727969}
   - component: {fileID: 4738363707591293349}
-  - component: {fileID: 8856529931069677683}
   - component: {fileID: -7524137317866910365}
+  - component: {fileID: 7859861038926469645}
   m_Layer: 0
   m_Name: Seashore
   m_TagString: Untagged
@@ -28,7 +28,7 @@ Transform:
   m_GameObject: {fileID: 5406993839084660143}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 260.91742, y: 165.99368, z: 26.899746}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 2.5, y: 2.5, z: 2.5}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
@@ -84,23 +84,6 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!114 &8856529931069677683
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5406993839084660143}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a8f21d6977830fd4fa6466187d7fbcfa, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  landID: 123
-  nearbyLands: []
-  status: 0
-  buildings: 
-  buildingsCount: 0
 --- !u!61 &-7524137317866910365
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -127,3 +110,21 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 1, y: 1}
   m_EdgeRadius: 0
+--- !u!114 &7859861038926469645
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5406993839084660143}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 718e789b3a16af041a5bb6e01bd11136, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  landID: 
+  nearbyLands: []
+  status: 0
+  buildings: 
+  buildingsCount: 0
+  landStatusUI: {fileID: 0}

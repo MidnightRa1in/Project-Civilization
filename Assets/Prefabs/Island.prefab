@@ -10,8 +10,8 @@ GameObject:
   m_Component:
   - component: {fileID: 8202897035390095421}
   - component: {fileID: 9216477063180818774}
-  - component: {fileID: 1856649146245890927}
   - component: {fileID: -3956707785053470222}
+  - component: {fileID: 4318446180330874494}
   m_Layer: 0
   m_Name: Island
   m_TagString: Untagged
@@ -28,7 +28,7 @@ Transform:
   m_GameObject: {fileID: 4649281355338394881}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 2.5, y: 2.5, z: 2.5}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
@@ -84,25 +84,6 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!114 &1856649146245890927
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4649281355338394881}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a8f21d6977830fd4fa6466187d7fbcfa, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  landID: 
-  nearbyLands:
-  - {fileID: 0}
-  - {fileID: 0}
-  status: 0
-  buildings: 
-  buildingsCount: 0
 --- !u!61 &-3956707785053470222
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -129,3 +110,21 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 1, y: 1}
   m_EdgeRadius: 0
+--- !u!114 &4318446180330874494
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4649281355338394881}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 055a92777d1ccd44b97722ce6ccb54ef, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  landID: 
+  nearbyLands: []
+  status: 0
+  buildings: 
+  buildingsCount: 0
+  landStatusUI: {fileID: 0}

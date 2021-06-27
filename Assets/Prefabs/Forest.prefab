@@ -10,7 +10,6 @@ GameObject:
   m_Component:
   - component: {fileID: 4669316967363333534}
   - component: {fileID: 9121256238789556716}
-  - component: {fileID: -9135555687701579886}
   - component: {fileID: -8206697839096797403}
   - component: {fileID: -2426744453902768259}
   m_Layer: 0
@@ -29,7 +28,7 @@ Transform:
   m_GameObject: {fileID: 7989359129012731107}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 261.08145, y: 135.9284, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 2.5, y: 2.5, z: 2.5}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
@@ -85,24 +84,6 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!114 &-9135555687701579886
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7989359129012731107}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a8f21d6977830fd4fa6466187d7fbcfa, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  landID: 
-  nearbyLands: []
-  status: 0
-  buildings: 
-  buildingsCount: 0
-  landStatusUI: {fileID: 0}
 --- !u!61 &-8206697839096797403
 BoxCollider2D:
   m_ObjectHideFlags: 0
