@@ -144,17 +144,17 @@ public static class Resource
 
     public static Dictionary<string, Dictionary<resource, int>> allBuilding = new Dictionary<string, Dictionary<resource, int>>()
     {
-        ["MineralFacility"] = { },
-        ["MaterialFacility"] = { },
-        ["FishingVillage"] = { },
-        ["Farm"] = { },
-        ["Market"] = { },
-        ["FinanceCenter"] = { },
-        ["ArtField"] = { },
-        ["ReligiousField"] = { },
-        ["Workshop"] = { },
-        ["Factory"] = { },
-        ["Harbor"] = { },
+        ["MineralFacility"] = mineralFacility,
+        ["MaterialFacility"] = materialFacility,
+        ["FishingVillage"] = fishingVillage,
+        ["Farm"] = farm,
+        ["Market"] = market,
+        ["FinanceCenter"] = financeCenter,
+        ["ArtField"] =  artField,
+        ["ReligiousField"] = religiousField,
+        ["Workshop"] = workshop,
+        ["Factory"] = factory,
+        ["Harbor"] = harbor,
         ["University"] = university
 
     };

@@ -29,7 +29,6 @@ public enum landBuilding
     FishingVillage,
     Farm,
     Market,
-    TradeCenter,
     FinanceCenter,
     ArtField,
     ReligiousField,
@@ -58,20 +57,6 @@ public enum resource
 }
 public class Land : MonoBehaviour
 {
-    //public List<string> landBuildings = new List<string>() {
-    //    "MineralFacility",
-    //    "MaterialFacility",
-    //    "FishingVillage",
-    //    "Farm",
-    //    "Market",
-    //    "TradeCenter",
-    //    "FinanceCenter",
-    //    "ArtField",
-    //    "ReligiousField",
-    //    "Workshop",
-    //    "Harbor",
-    //    "University",
-    //};
     public string landID;
     public Land[] nearbyLands;
     public landStatus status;
@@ -79,7 +64,7 @@ public class Land : MonoBehaviour
     public Development development;//土地開發狀態
     public List<landBuilding> buildings;//土地上的建築
     public int buildingsCount;
-    public Dictionary<resource, int> landResource;//每回合土地的資源變化
+    public Dictionary<resource, int> resources;//每回合土地的資源變化
 
     private Development developmentTree;//土地狀態演進順序
 
@@ -91,8 +76,6 @@ public class Land : MonoBehaviour
         buildings = new List<landBuilding>(3);
         buildingsCount = 0;
         development = InitialTree();
-        landResource = new Dictionary<resource, int>();
-        
     }
 
     // Update is called once per frame
@@ -111,7 +94,7 @@ public class Land : MonoBehaviour
         Dictionary<resource, int> previewRes = new Dictionary<resource, int>();
         foreach (var building in Resource.allBuilding[buildingName])
         {
-            foreach(var land in landResource)
+            foreach(var land in resources)
             {
                                
                 if (land.Key == building.Key)
@@ -131,7 +114,7 @@ public class Land : MonoBehaviour
         Dictionary<resource, int> previewRes = new Dictionary<resource, int>();
         foreach (var resource in Resource.allDevelopment[developName])
         {
-            foreach (var land in landResource)
+            foreach (var land in resources)
             {
                 if (land.Key == resource.Key)
                 {
@@ -144,7 +127,7 @@ public class Land : MonoBehaviour
 
     public virtual void Build(Dictionary<resource, int> next)//建造
     {
-        landResource = next;
+        resources = next;
     }
 
     //public virtual void OccurEvent()

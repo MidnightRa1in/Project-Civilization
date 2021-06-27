@@ -76,17 +76,26 @@ public class Player : MonoBehaviour
 
     public void CountResource()//計算變化量
     {
-        Dictionary<resource, int> temp = new Dictionary<resource, int>();
+        Dictionary<resource, int> temp = new Dictionary<resource, int>()
+        {
+            [resource.water] = 0,
+            [resource.food] = 0,
+            [resource.mineral] = 0,
+            [resource.material] = 0,
+            [resource.money] = 0,
+            [resource.labor] = 0,
+            [resource.product] = 0,
+        };
         ClearResource();
         foreach (Land land in developedLands)
         {
             foreach (var resource in resourceEachTurn)
             {
-                foreach (var landResource in land.landResource)
+                foreach (var landResource in land.resources)
                 {
                     if (resource.Key == landResource.Key)
                     {
-                        temp.Add(resource.Key, resource.Value + landResource.Value);
+                        temp[resource.Key] += (resource.Value + landResource.Value);
                     }
                 }
             }

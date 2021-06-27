@@ -67,13 +67,13 @@ public class LandStatusUI : MonoBehaviour
                     break;
             }
         }
-        water.text = land.landResource[resource.water].ToString();
-        food.text = land.landResource[resource.food].ToString();
-        mineral.text = land.landResource[resource.mineral].ToString();
-        material.text = land.landResource[resource.material].ToString();
-        money.text = land.landResource[resource.money].ToString();
-        labor.text = land.landResource[resource.labor].ToString();
-        product.text = land.landResource[resource.product].ToString();
+        water.text = land.resources[resource.water].ToString();
+        food.text = land.resources[resource.food].ToString();
+        mineral.text = land.resources[resource.mineral].ToString();
+        material.text = land.resources[resource.material].ToString();
+        money.text = land.resources[resource.money].ToString();
+        labor.text = land.resources[resource.labor].ToString();
+        product.text = land.resources[resource.product].ToString();
 
     }
     
