@@ -10,7 +10,7 @@ public class ConfirmDevelopButton : ConfirmButton
     // Start is called before the first frame update
     void Start()
     {
-        
+
     }
 
     // Update is called once per frame
@@ -23,6 +23,11 @@ public class ConfirmDevelopButton : ConfirmButton
     {
         base.buttonClicked();
         player.locationNow.SetDevelopment(nextStage);
+
+        if(nextStage == landDevelopment.Village)//若開發未開發土地，將其加入Player土地
+        {
+            player.AddALand(player.locationNow);
+        }
         
         UI.gameObject.SetActive(false);
         GameControl.EndofTurn();

@@ -8,7 +8,7 @@ public class GameControl : MonoBehaviour
     [SerializeField]
     private GameObject[] lands;
     [SerializeField]
-    private Player player;
+    private static Player player;
     [SerializeField]
     private PlaceToGoUI placeToGo;
     [SerializeField]
@@ -19,6 +19,8 @@ public class GameControl : MonoBehaviour
     private BuildUI buildUI;
     [SerializeField]
     private DevelopUI developUI;
+    [SerializeField]
+    private LandStatusUI landStatusUI;
     [SerializeField]
     private Dice dice;
 
@@ -67,6 +69,7 @@ public class GameControl : MonoBehaviour
         foreach (GameObject land in lands)
         {
             land.GetComponent<Land> ().landID = land.name;
+            land.GetComponent<Land>().landStatusUI = landStatusUI;
         }
     }
 
@@ -154,5 +157,13 @@ public class GameControl : MonoBehaviour
         coroutineAllowed = true;
         rollDice = true;
         rounds++;
+        player.CountResource();
+        player.GetResource();
+        //Test Resources
+        foreach(var resource in player.Property)
+        {
+            Debug.Log("Player own   " + resource.Value + "  " + resource.Key);
+        }
+        
     }
 }

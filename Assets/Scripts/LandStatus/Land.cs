@@ -12,14 +12,14 @@ public enum landStatus
     Desert,
     Forest,
     Lake,
-    Riverside,
+    Riverside,//
     Plateau,
     Plain,
     Island,
     Seashore,
     Swamp,
     Savanna,
-    Mountain,
+    Mountain,//
     Cave,
 }
 public enum landBuilding
@@ -55,9 +55,6 @@ public enum resource
     money,
     labor,
     product,
-
-    development,
-
 }
 public class Land : MonoBehaviour
 {
@@ -86,19 +83,27 @@ public class Land : MonoBehaviour
 
     private Development developmentTree;//土地狀態演進順序
 
+    public LandStatusUI landStatusUI;
+
     // Start is called before the first frame update
     public void Start()
     {
         buildings = new List<landBuilding>(3);
         buildingsCount = 0;
         development = InitialTree();
-        landResource = new Dictionary<resource, int>(Mountain.resources);
+        landResource = new Dictionary<resource, int>();
+        
     }
 
     // Update is called once per frame
     public void Update()
     {
         
+    }
+    void OnMouseDown()//點擊土地
+    {
+        landStatusUI.gameObject.SetActive(true);
+        landStatusUI.LoadLandInfo(this);
     }
 
     public Dictionary<resource, int> Preview(string buildingName)//建造建築物預覽
@@ -171,7 +176,7 @@ public class Land : MonoBehaviour
         return developmentTree;
     }
 
-    public void SetDevelopment(landDevelopment target)
+    public void SetDevelopment(landDevelopment target)//將土地設定為指定的開發狀態
     {
         foreach(Development nextOne in development.nextDevelopment)
         {
