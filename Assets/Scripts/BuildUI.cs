@@ -32,6 +32,7 @@ public class BuildUI : MonoBehaviour
     private List<GameObject> buttons;
     private List<GameObject> resourcePanel;
     private List<GameObject> resourceETPanel;
+    private List<Text> texts;
 
 
     // Start is called before the first frame update
@@ -41,6 +42,16 @@ public class BuildUI : MonoBehaviour
         buttons = new List<GameObject>();
         resourcePanel = new List<GameObject>();
         resourceETPanel = new List<GameObject>();
+        texts = new List<Text>()
+        {
+            water,
+            food,
+            mineral,
+            material,
+            money,
+            labor,
+            product
+        };
     }
 
     // Update is called once per frame
@@ -105,13 +116,7 @@ public class BuildUI : MonoBehaviour
             }
             
         }
-        water.text = "";
-        food.text = "";
-        mineral.text = "";
-        material.text = "";
-        money.text = "";
-        labor.text = "";
-        product.text = "";
+        ResetText();
         previewETPanel.SetActive(false);
     }
     public void GeneratePreviewPanel(Dictionary<resource, int> previewRes,landBuilding buildingName)//¥Í¦¨preview panel
@@ -134,19 +139,7 @@ public class BuildUI : MonoBehaviour
             resourcePanel.Add(panel);
         }
 
-        foreach(KeyValuePair<landBuilding, Dictionary<resource, int>> dic in Resource.allBuildingCost)
-        {
-            if(dic.Key == buildingName)
-            {
-                water.text = dic.Value[resource.water].ToString();
-                food.text = dic.Value[resource.food].ToString();
-                mineral.text = dic.Value[resource.mineral].ToString();
-                material.text = dic.Value[resource.material].ToString();
-                money.text = dic.Value[resource.money].ToString();
-                labor.text = dic.Value[resource.labor].ToString();
-                product.text = dic.Value[resource.product].ToString();
-            }
-        }
+        
     }
 
     public void GeneratePreviewETPanel(Dictionary<resource,int> preview, landBuilding build)
@@ -180,6 +173,33 @@ public class BuildUI : MonoBehaviour
             panel.transform.SetParent(previewETPanel.transform.parent, false);
             resourceETPanel.Add(panel);
         }
-        Debug.Log(resourceETPanel.Count);
     }
+    public void GenerateCostPanel(landBuilding name)
+    {
+        ResetText();
+        water.text = Resource.allBuildingCost[name][resource.water].ToString();
+        if (player.Property[resource.water] < Resource.allBuildingCost[name][resource.water]) water.color = Color.red;
+        food.text = Resource.allBuildingCost[name][resource.food].ToString();
+        if (player.Property[resource.food] < Resource.allBuildingCost[name][resource.food]) food.color = Color.red;
+        mineral.text = Resource.allBuildingCost[name][resource.mineral].ToString();
+        if (player.Property[resource.mineral] < Resource.allBuildingCost[name][resource.mineral]) mineral.color = Color.red;
+        material.text = Resource.allBuildingCost[name][resource.material].ToString();
+        if (player.Property[resource.material] < Resource.allBuildingCost[name][resource.material]) material.color = Color.red;
+        money.text = Resource.allBuildingCost[name][resource.money].ToString();
+        if (player.Property[resource.money] < Resource.allBuildingCost[name][resource.money]) money.color = Color.red;
+        labor.text = Resource.allBuildingCost[name][resource.labor].ToString();
+        if (player.Property[resource.labor] < Resource.allBuildingCost[name][resource.labor]) labor.color = Color.red;
+        product.text = Resource.allBuildingCost[name][resource.product].ToString();
+        if (player.Property[resource.product] < Resource.allBuildingCost[name][resource.product]) product.color = Color.red;
+
+    }
+    private void ResetText()
+    {
+        foreach (Text tex in texts)
+        {
+            tex.text = "";
+            tex.color = Color.black;
+        }
+    }
+
 }

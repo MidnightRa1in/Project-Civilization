@@ -21,6 +21,7 @@ public class ConfirmDevelopButton : ConfirmButton
 
     public override void buttonClicked()
     {
+        player.UseResource(nextStage);
         player.locationNow.Develop(next);
         player.locationNow.SetDevelopment(nextStage);
 
@@ -45,7 +46,6 @@ public class ConfirmDevelopButton : ConfirmButton
             default: break;
 
         }
-        
         UI.gameObject.SetActive(false);
         GameControl.EndofTurn();
 

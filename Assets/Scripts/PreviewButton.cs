@@ -18,7 +18,7 @@ public class PreviewButton : MonoBehaviour
     void Start()
     {
         player = GameObject.Find("Player").GetComponent<Player>();
-        
+
     }
 
     // Update is called once per frame
@@ -34,12 +34,35 @@ public class PreviewButton : MonoBehaviour
 
     public void buildingClicked()
     {
+        confirm.gameObject.GetComponent<Button>().enabled = true;
         Dictionary<resource, int> next = new Dictionary<resource, int>();
         next = player.locationNow.Preview(buildingName);
         buildUI.GeneratePreviewPanel(next,buildingName);
         buildUI.GeneratePreviewETPanel(player.ResourceEachTurn,buildingName);
+        buildUI.GenerateCostPanel(buildingName);
+        if(CheckUseAllowance(buildingName) == false)
+        {
+            confirm.gameObject.GetComponent<Button>().enabled = false;
+        }
         confirm.loadNext(next);
         confirm.loadConstructedBuilding(buildingName);
 
+    }
+    private bool CheckUseAllowance(landBuilding building)
+    {
+        foreach(KeyValuePair<resource,int> cost in Resource.allBuildingCost[building])
+        {
+            foreach(KeyValuePair<resource,int> prop in player.Property)
+            {
+                if (prop.Key == cost.Key)
+                {
+                    if (prop.Value < cost.Value)
+                    {
+                        return false;
+                    }
+                }
+            }
+        }
+        return true;
     }
 }

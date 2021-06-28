@@ -100,6 +100,65 @@ public static class Resource
 
     };
 
+    public static Dictionary<resource, int> UndevelopedCost = new Dictionary<resource, int>()
+    {
+        [resource.water] = 0,
+        [resource.food] = 0,
+        [resource.mineral] = 0,
+        [resource.material] = 0,
+        [resource.money] = 0,
+        [resource.labor] = 0,
+        [resource.product] = 0,
+
+    };
+    public static Dictionary<resource, int> VillageCost = new Dictionary<resource, int>()
+    {
+        [resource.water] = 1,
+        [resource.food] = 1,
+        [resource.mineral] = 0,
+        [resource.material] = 2,
+        [resource.money] = 0,
+        [resource.labor] = 1,
+        [resource.product] = 0,
+
+    };
+
+    public static Dictionary<resource, int> TownCost = new Dictionary<resource, int>()
+    {
+        [resource.water] = 5,
+        [resource.food] = 5,
+        [resource.mineral] = 0,
+        [resource.material] = 6,
+        [resource.money] = 3,
+        [resource.labor] = 2,
+        [resource.product] = 0,
+
+    };
+
+    public static Dictionary<resource, int> CityCost = new Dictionary<resource, int>()
+    {
+        [resource.water] = 15,
+        [resource.food] = 15,
+        [resource.mineral] = 5,
+        [resource.material] = 15,
+        [resource.money] = 10,
+        [resource.labor] = 8,
+        [resource.product] = 3,
+
+    };
+
+    public static Dictionary<resource, int> IndustrialAreaCost = new Dictionary<resource, int>()
+    {
+        [resource.water] = 12,
+        [resource.food] = 12,
+        [resource.mineral] = 10,
+        [resource.material] = 15,
+        [resource.money] = 10,
+        [resource.labor] = 8,
+        [resource.product] = 3,
+
+    };
+
     public static Dictionary<landDevelopment, Dictionary<resource, int>> allDevelopment = new Dictionary<landDevelopment, Dictionary<resource, int>>()
     {
         [landDevelopment.Undeveloped] = Undeveloped,
@@ -107,6 +166,14 @@ public static class Resource
         [landDevelopment.Town] = Town,
         [landDevelopment.City] = City,
         [landDevelopment.IndustrialArea] = IndustrialArea,
+    };
+    public static Dictionary<landDevelopment, Dictionary<resource, int>> allDevelopmentCost = new Dictionary<landDevelopment, Dictionary<resource, int>>()
+    {
+        [landDevelopment.Undeveloped] = UndevelopedCost,
+        [landDevelopment.Village] = VillageCost,
+        [landDevelopment.Town] = TownCost,
+        [landDevelopment.City] = CityCost,
+        [landDevelopment.IndustrialArea] = IndustrialAreaCost,
     };
 }
 

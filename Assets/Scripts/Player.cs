@@ -41,7 +41,7 @@ public class Player : MonoBehaviour
             [resource.mineral] = 0,
             [resource.material] = 5,
             [resource.money] = 0,
-            [resource.labor] = 1,
+            [resource.labor] = 2,
             [resource.product] = 2,
 
         };
@@ -68,6 +68,21 @@ public class Player : MonoBehaviour
             foreach(KeyValuePair<resource, int> cost in Resource.allBuildingCost[buildingCost])
             {
                 if(prop.Key == cost.Key)
+                {
+                    temp.Add(prop.Key, prop.Value - cost.Value);
+                }
+            }
+        }
+        property = temp;
+    }
+    public void UseResource(landDevelopment developCost)
+    {
+        Dictionary<resource, int> temp = new Dictionary<resource, int>();
+        foreach (KeyValuePair<resource, int> prop in property)
+        {
+            foreach (KeyValuePair<resource, int> cost in Resource.allDevelopmentCost[developCost])
+            {
+                if (prop.Key == cost.Key)
                 {
                     temp.Add(prop.Key, prop.Value - cost.Value);
                 }

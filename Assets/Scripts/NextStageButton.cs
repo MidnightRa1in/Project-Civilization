@@ -34,15 +34,19 @@ public class NextStageButton : MonoBehaviour
 
     public void developmentClicked()
     {
+        confirm.gameObject.GetComponent<Button>().enabled = true;
         Dictionary<resource, int> next = new Dictionary<resource, int>();
         Dictionary<resource, int> change = new Dictionary<resource, int>(); 
         change =  Counting(next);
         next = player.locationNow.PreviewDevelop(developName);
         developUI.GeneratePreviewPanel(next,change);
+        developUI.GenerateCostPanel(developName);
+        if (CheckUseAllowance(developName) == false)
+        {
+            confirm.gameObject.GetComponent<Button>().enabled = false;
+        } 
         confirm.loadNext(next);
         confirm.loadNextStage(developName);
-        Debug.Log(developName);
-
     }
     private Dictionary<resource, int> Counting(Dictionary<resource, int> next)
     {
@@ -59,4 +63,22 @@ public class NextStageButton : MonoBehaviour
         }
         return previewRes;
     }
+    private bool CheckUseAllowance(landDevelopment dev)
+    {
+        foreach (KeyValuePair<resource, int> cost in Resource.allDevelopmentCost[dev])
+        {
+            foreach (KeyValuePair<resource, int> prop in player.Property)
+            {
+                if(prop.Key == cost.Key)
+                {
+                    if (prop.Value < cost.Value)
+                    {
+                        return false;
+                    }
+                }         
+            }
+        }
+        return true;
+    }
+    
 }
