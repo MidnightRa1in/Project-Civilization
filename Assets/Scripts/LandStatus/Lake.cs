@@ -12,7 +12,7 @@ public class Lake : Land
             [resource.water] = 2,
             [resource.food] = 1,
             [resource.mineral] = 1,
-            [resource.material] = 1,
+            [resource.material] = 0,
             [resource.money] = 0,
             [resource.labor] = 0,
             [resource.product] = 0,
@@ -23,13 +23,18 @@ public class Lake : Land
     {
         base.Update();
     }
-    
 
-    public override void Build(Dictionary<resource, int> next)
+
+    public override void Build(Dictionary<resource, int> next, landBuilding building)
     {
-        base.Build(next);
-        resources[resource.water] += 1;
-        resources[resource.labor] += 1;
-        resources[resource.material] -= 1;
+        if (building == landBuilding.FishingVillage)
+        {
+            next[resource.food] += 1;
+        }
+        if (building == landBuilding.Factory)
+        {
+            next[resource.water] -= 1;
+        }
+        resources = next;
     }
 }

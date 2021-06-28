@@ -8,7 +8,7 @@ public class ConfirmButton : MonoBehaviour
     protected Player player;
 
 
-    private Dictionary<resource, int> next = new Dictionary<resource, int>();
+    protected Dictionary<resource, int> next = new Dictionary<resource, int>();
     protected landDevelopment nextStage;
     protected landBuilding constructedBuilding;
 
@@ -25,7 +25,7 @@ public class ConfirmButton : MonoBehaviour
     }
     public virtual void buttonClicked()
     {
-        player.locationNow.Build(next);
+        
     }
     public void loadNext(Dictionary<resource, int> next)
     {

@@ -12,7 +12,7 @@ public class Volcano : Land
             [resource.water] = 1,
             [resource.food] = 1,
             [resource.mineral] = 2,
-            [resource.material] = 2,
+            [resource.material] = 1,
             [resource.money] = 0,
             [resource.labor] = 0,
             [resource.product] = 0,
@@ -25,14 +25,12 @@ public class Volcano : Land
     }
 
 
-    public override void Build(Dictionary<resource, int> next)
+    public override void Build(Dictionary<resource, int> next,landBuilding building)
     {
-        base.Build(next);
-        resources[resource.water] -= 1;
-        resources[resource.food] -= 1;
-        resources[resource.mineral] += 1;
-        resources[resource.material] += 1;
-        resources[resource.labor] -= 1;
-        resources[resource.product] += 1;
+        if (building == landBuilding.MineralFacility)
+        {
+            next[resource.mineral] += 2;
+        }
+        resources = next;
     }
 }

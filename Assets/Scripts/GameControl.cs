@@ -161,11 +161,6 @@ public class GameControl : MonoBehaviour
         rounds++;
         player.CountResource();
         player.GetResource();
-        //Test Resources
-        foreach(var resource in player.Property)
-        {
-            Debug.Log("Player own   " + resource.Value + "  " + resource.Key);
-        }
         
     }
 }

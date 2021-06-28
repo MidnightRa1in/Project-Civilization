@@ -35,8 +35,8 @@ public class PreviewButton : MonoBehaviour
     public void buildingClicked()
     {
         Dictionary<resource, int> next = new Dictionary<resource, int>();
-        next = player.locationNow.Preview(buttonName.text);
-        buildUI.GeneratePreviewPanel(next);
+        next = player.locationNow.Preview(buildingName);
+        buildUI.GeneratePreviewPanel(next,buildingName);
         confirm.loadNext(next);
         confirm.loadConstructedBuilding(buildingName);
 

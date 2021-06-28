@@ -21,7 +21,7 @@ public class ConfirmDevelopButton : ConfirmButton
 
     public override void buttonClicked()
     {
-        base.buttonClicked();
+        player.locationNow.Develop(next);
         player.locationNow.SetDevelopment(nextStage);
 
         if(nextStage == landDevelopment.Village)//若開發未開發土地，將其加入Player土地

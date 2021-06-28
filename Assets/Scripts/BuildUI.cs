@@ -11,6 +11,21 @@ public class BuildUI : MonoBehaviour
     [SerializeField]
     private GameObject previewPanel;
 
+    [SerializeField]
+    private Text water;
+    [SerializeField]
+    private Text food;
+    [SerializeField]
+    private Text mineral;
+    [SerializeField]
+    private Text material;
+    [SerializeField]
+    private Text money;
+    [SerializeField]
+    private Text labor;
+    [SerializeField]
+    private Text product;
+
     private Player player;
     private List<GameObject> buttons;
     private List<GameObject> resourcePanel;
@@ -49,18 +64,47 @@ public class BuildUI : MonoBehaviour
             resourcePanel.Clear();
         }
 
-        Array buildings = Enum.GetValues(typeof(landBuilding));
-
-        foreach(landBuilding build in buildings)
+        List<Building> building = new List<Building>()
         {
-            GameObject button = Instantiate(previewButton) as GameObject;
-            button.SetActive(true);
-            button.GetComponent<PreviewButton>().SetText(build);
-            button.transform.SetParent(previewButton.transform.parent, false);
-            buttons.Add(button);
+            new MaterialFacility(),
+            new MineralFacility(),
+            new FishingVillage(),
+            new Farm(),
+            new Market(),
+            new FinanceCenter(),
+            new ArtField(),
+            new ReligiousField(),
+            new Workshop(),
+            new Factory(),
+            new Harbor(),
+            new University(),
+        };       
+
+        //Array buildings = Enum.GetValues(typeof(landBuilding));
+
+        foreach(Building build in building)
+        {
+            if(build.CheckBuildingAllowance(player.locationNow))
+            {
+                GameObject button = Instantiate(previewButton) as GameObject;
+                button.SetActive(true);
+                button.GetComponent<PreviewButton>().SetText(build.BuildingName);
+                button.transform.SetParent(previewButton.transform.parent, false);
+                buttons.Add(button);
+                Debug.Log(build.BuildingName);
+            }
+            
         }
+        
+        water.text = "";
+        food.text = "";
+        mineral.text = "";
+        material.text = "";
+        money.text = "";
+        labor.text = "";
+        product.text = "";
     }
-    public void GeneratePreviewPanel(Dictionary<resource, int> previewRes)
+    public void GeneratePreviewPanel(Dictionary<resource, int> previewRes,landBuilding buildingName)
     {
         if (resourcePanel.Count > 0)
         {
@@ -71,7 +115,7 @@ public class BuildUI : MonoBehaviour
             resourcePanel.Clear();
         }
 
-        foreach(var resource in previewRes)
+        foreach(KeyValuePair<resource, int> resource in previewRes)
         {
             GameObject panel = Instantiate(previewPanel) as GameObject;
             panel.SetActive(true);
@@ -80,7 +124,24 @@ public class BuildUI : MonoBehaviour
             resourcePanel.Add(panel);
         }
 
+        foreach(KeyValuePair<landBuilding, Dictionary<resource, int>> dic in Resource.allBuildingCost)
+        {
+            if(dic.Key == buildingName)
+            {
+                water.text = dic.Value[resource.water].ToString();
+                food.text = dic.Value[resource.food].ToString();
+                mineral.text = dic.Value[resource.mineral].ToString();
+                material.text = dic.Value[resource.material].ToString();
+                money.text = dic.Value[resource.money].ToString();
+                labor.text = dic.Value[resource.labor].ToString();
+                product.text = dic.Value[resource.product].ToString();
+            }
+        }
+
+        
+
     }
+
 
 
 }

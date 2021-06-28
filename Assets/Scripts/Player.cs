@@ -34,15 +34,15 @@ public class Player : MonoBehaviour
         moveAllowed = false;
         locationNow = Athena11AsSpawn;
         developedLands = new List<Land>();
-        property = new Dictionary<resource, int>()
+        property = new Dictionary<resource, int>()//ªì©l­È
         {
-            [resource.water] = 0,
-            [resource.food] = 0,
+            [resource.water] = 5,
+            [resource.food] = 5,
             [resource.mineral] = 0,
-            [resource.material] = 0,
+            [resource.material] = 5,
             [resource.money] = 0,
-            [resource.labor] = 0,
-            [resource.product] = 0,
+            [resource.labor] = 1,
+            [resource.product] = 2,
 
         };
         ClearResource();
@@ -58,6 +58,22 @@ public class Player : MonoBehaviour
     public void AddALand(Land newLand)
     {
         developedLands.Add(newLand);
+    }
+
+    public void UseResource(landBuilding buildingCost)
+    {
+        Dictionary<resource, int> temp = new Dictionary<resource, int>();
+        foreach(KeyValuePair<resource, int> prop in property)
+        {
+            foreach(KeyValuePair<resource, int> cost in Resource.allBuildingCost[buildingCost])
+            {
+                if(prop.Key == cost.Key)
+                {
+                    temp.Add(prop.Key, prop.Value - cost.Value);
+                }
+            }
+        }
+        property = temp;
     }
     private void ClearResource()//²MªÅ
     {
@@ -89,9 +105,9 @@ public class Player : MonoBehaviour
         ClearResource();
         foreach (Land land in developedLands)
         {
-            foreach (var resource in resourceEachTurn)
+            foreach (KeyValuePair<resource, int> resource in resourceEachTurn)
             {
-                foreach (var landResource in land.resources)
+                foreach (KeyValuePair<resource, int> landResource in land.resources)
                 {
                     if (resource.Key == landResource.Key)
                     {
@@ -105,9 +121,9 @@ public class Player : MonoBehaviour
     public void GetResource()
     {
         Dictionary<resource, int> temp = new Dictionary<resource, int>();
-        foreach(var prop in property)
+        foreach(KeyValuePair<resource, int> prop in property)
         {
-            foreach(var eachTurn in resourceEachTurn)
+            foreach(KeyValuePair<resource, int> eachTurn in resourceEachTurn)
             {
                 if(prop.Key == eachTurn.Key)
                 {

@@ -19,7 +19,9 @@ public class ConfirmBuildButton : ConfirmButton
     }
     public override void buttonClicked()
     {
-        base.buttonClicked();
+        
+        player.UseResource(constructedBuilding);
+        player.locationNow.Build(next, constructedBuilding);
         player.locationNow.buildings.Add(constructedBuilding);
         player.locationNow.buildingsCount++;
         UI.gameObject.SetActive(false);

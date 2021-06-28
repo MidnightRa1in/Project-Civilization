@@ -10,9 +10,9 @@ public class Seashore : Land
         resources = new Dictionary<resource, int>()
         {
             [resource.water] = 1,
-            [resource.food] = 2,
+            [resource.food] = 1,
             [resource.mineral] = 0,
-            [resource.material] = 1,
+            [resource.material] = 0,
             [resource.money] = 0,
             [resource.labor] = 0,
             [resource.product] = 0,
@@ -25,11 +25,21 @@ public class Seashore : Land
     }
 
 
-    public override void Build(Dictionary<resource, int> next)
+    public override void Build(Dictionary<resource, int> next, landBuilding building)
     {
-        base.Build(next);
-        resources[resource.water] += 1;
-        resources[resource.food] += 1;
-        resources[resource.material] -= 1;
+        if (building == landBuilding.FinanceCenter)
+        {
+            next[resource.product] += 1;
+        }
+        if (building == landBuilding.Factory)
+        {
+            next[resource.water] -= 1;
+            next[resource.product] += 1;
+        }
+        if (building == landBuilding.Harbor)
+        {
+            next[resource.money] += 1;
+        }
+        resources = next;
     }
 }

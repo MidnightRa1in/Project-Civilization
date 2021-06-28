@@ -10,9 +10,9 @@ public class Savanna : Land
         resources = new Dictionary<resource, int>()
         {
             [resource.water] = 1,
-            [resource.food] = 1,
+            [resource.food] = 0,
             [resource.mineral] = 0,
-            [resource.material] = 1,
+            [resource.material] = 0,
             [resource.money] = 0,
             [resource.labor] = 0,
             [resource.product] = 0,
@@ -25,10 +25,8 @@ public class Savanna : Land
     }
 
 
-    public override void Build(Dictionary<resource, int> next)
+    public override void Build(Dictionary<resource, int> next, landBuilding building)
     {
-        base.Build(next);
-        resources[resource.food] += 1;
-
+        resources = next;
     }
 }

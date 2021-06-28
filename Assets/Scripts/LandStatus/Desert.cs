@@ -25,11 +25,16 @@ public class Desert : Land
     }
 
 
-    public override void Build(Dictionary<resource, int> next)
+    public override void Build(Dictionary<resource, int> next, landBuilding building)
     {
-        base.Build(next);
-        resources[resource.water] -= 1;
-        resources[resource.food] -= 1;
-        resources[resource.mineral] += 1;
+        if (building == landBuilding.Market)
+        {
+            next[resource.labor] -= 1;
+        }
+        if (building == landBuilding.Farm)
+        {
+            next[resource.food] -= 1;
+        }
+        resources = next;
     }
 }

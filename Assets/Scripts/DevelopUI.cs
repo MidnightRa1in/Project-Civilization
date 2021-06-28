@@ -71,7 +71,7 @@ public class DevelopUI : MonoBehaviour
             resourcePanel.Clear();
         }
 
-        foreach (var resource in previewRes)
+        foreach (KeyValuePair<resource, int> resource in previewRes)
         {
             GameObject panel = Instantiate(previewPanel) as GameObject;
             panel.SetActive(true);

@@ -12,14 +12,14 @@ public enum landStatus
     Desert,
     Forest,
     Lake,
-    Riverside,//
+    Riverside,
     Plateau,
     Plain,
     Island,
     Seashore,
     Swamp,
     Savanna,
-    Mountain,//
+    Mountain,
     Cave,
 }
 public enum landBuilding
@@ -33,6 +33,7 @@ public enum landBuilding
     ArtField,
     ReligiousField,
     Workshop,
+    Factory,
     Harbor,
     University,
 }
@@ -89,12 +90,12 @@ public class Land : MonoBehaviour
         landStatusUI.LoadLandInfo(this);
     }
 
-    public Dictionary<resource, int> Preview(string buildingName)//建造建築物預覽
+    public Dictionary<resource, int> Preview(landBuilding buildingName)//建造建築物預覽
     {
         Dictionary<resource, int> previewRes = new Dictionary<resource, int>();
-        foreach (var building in Resource.allBuilding[buildingName])
+        foreach (KeyValuePair<resource, int> building in Resource.allBuilding[buildingName])
         {
-            foreach(var land in resources)
+            foreach(KeyValuePair<resource, int> land in resources)
             {
                                
                 if (land.Key == building.Key)
@@ -112,9 +113,9 @@ public class Land : MonoBehaviour
     public Dictionary<resource, int> PreviewDevelop(landDevelopment developName)//開發土地預覽
     {
         Dictionary<resource, int> previewRes = new Dictionary<resource, int>();
-        foreach (var resource in Resource.allDevelopment[developName])
+        foreach (KeyValuePair<resource, int> resource in Resource.allDevelopment[developName])
         {
-            foreach (var land in resources)
+            foreach (KeyValuePair<resource, int> land in resources)
             {
                 if (land.Key == resource.Key)
                 {
@@ -125,7 +126,10 @@ public class Land : MonoBehaviour
         return previewRes;
     }
 
-    public virtual void Build(Dictionary<resource, int> next)//建造
+    public virtual void Build(Dictionary<resource, int> next,landBuilding building)//建造
+    {
+    }
+    public virtual void Develop(Dictionary<resource, int> next)//開發
     {
         resources = next;
     }

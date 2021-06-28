@@ -25,11 +25,12 @@ public class Swamp : Land
     }
 
 
-    public override void Build(Dictionary<resource, int> next)
-    {
-        base.Build(next);
-        resources[resource.water] += 1;
-        resources[resource.material] -= 1;
-        resources[resource.mineral] -= 1;
+    public override void Build(Dictionary<resource, int> next, landBuilding building)
+    {      
+        if(building == landBuilding.Farm)
+        {
+            next[resource.food] -= 1;
+        }
+        resources = next;
     }
 }
