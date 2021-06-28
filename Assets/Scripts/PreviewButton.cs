@@ -37,6 +37,7 @@ public class PreviewButton : MonoBehaviour
         Dictionary<resource, int> next = new Dictionary<resource, int>();
         next = player.locationNow.Preview(buildingName);
         buildUI.GeneratePreviewPanel(next,buildingName);
+        buildUI.GeneratePreviewETPanel(player.ResourceEachTurn,buildingName);
         confirm.loadNext(next);
         confirm.loadConstructedBuilding(buildingName);
 

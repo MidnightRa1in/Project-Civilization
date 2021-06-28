@@ -9,6 +9,8 @@ public class PreviewPanel : MonoBehaviour
     private Text itemName;
     [SerializeField]
     private Text itemChange;
+    [SerializeField]
+    private Text itemChangeAmount;
     // Start is called before the first frame update
     void Start()
     {
@@ -24,5 +26,11 @@ public class PreviewPanel : MonoBehaviour
     {
         itemName.text = _itemName;
         itemChange.text = _itemChange;
+    }
+    public void SetText(string _itemName, string _itemChange, string _itemChangeAmount)
+    {
+        itemName.text = _itemName;
+        itemChange.text = _itemChange;
+        itemChangeAmount.text = "(" + _itemChangeAmount + ")";
     }
 }

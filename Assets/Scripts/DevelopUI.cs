@@ -60,7 +60,7 @@ public class DevelopUI : MonoBehaviour
             buttons.Add(button);
         }
     }
-    public void GeneratePreviewPanel(Dictionary<resource, int> previewRes)//產生預覽畫面
+    public void GeneratePreviewPanel(Dictionary<resource, int> previewRes, Dictionary<resource, int> change)//產生預覽畫面
     {
         if (resourcePanel.Count > 0)
         {

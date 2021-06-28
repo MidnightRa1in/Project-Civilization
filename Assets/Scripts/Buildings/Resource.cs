@@ -41,6 +41,17 @@ public static class Resource
     };
 
     //development
+    public static Dictionary<resource, int> Undeveloped = new Dictionary<resource, int>()
+    {
+        [resource.water] = 0,
+        [resource.food] = 0,
+        [resource.mineral] = 0,
+        [resource.material] = 0,
+        [resource.money] = 0,
+        [resource.labor] = 0,
+        [resource.product] = 0,
+
+    };
     public static Dictionary<resource, int> Village = new Dictionary<resource, int>()
     {
         [resource.water] = 1,
@@ -91,6 +102,7 @@ public static class Resource
 
     public static Dictionary<landDevelopment, Dictionary<resource, int>> allDevelopment = new Dictionary<landDevelopment, Dictionary<resource, int>>()
     {
+        [landDevelopment.Undeveloped] = Undeveloped,
         [landDevelopment.Village] = Village,
         [landDevelopment.Town] = Town,
         [landDevelopment.City] = City,

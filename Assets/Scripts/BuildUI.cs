@@ -10,6 +10,8 @@ public class BuildUI : MonoBehaviour
     private GameObject previewButton;
     [SerializeField]
     private GameObject previewPanel;
+    [SerializeField]
+    private GameObject previewETPanel;
 
     [SerializeField]
     private Text water;
@@ -29,6 +31,7 @@ public class BuildUI : MonoBehaviour
     private Player player;
     private List<GameObject> buttons;
     private List<GameObject> resourcePanel;
+    private List<GameObject> resourceETPanel;
 
 
     // Start is called before the first frame update
@@ -37,6 +40,7 @@ public class BuildUI : MonoBehaviour
         gameObject.SetActive(false);
         buttons = new List<GameObject>();
         resourcePanel = new List<GameObject>();
+        resourceETPanel = new List<GameObject>();
     }
 
     // Update is called once per frame
@@ -63,6 +67,14 @@ public class BuildUI : MonoBehaviour
             }
             resourcePanel.Clear();
         }
+        if (resourceETPanel.Count > 0)
+        {
+            foreach (GameObject panel in resourceETPanel)
+            {
+                Destroy(panel.gameObject);
+            }
+            resourceETPanel.Clear();
+        }
 
         List<Building> building = new List<Building>()
         {
@@ -79,9 +91,7 @@ public class BuildUI : MonoBehaviour
             new Harbor(),
             new University(),
         };       
-
         //Array buildings = Enum.GetValues(typeof(landBuilding));
-
         foreach(Building build in building)
         {
             if(build.CheckBuildingAllowance(player.locationNow))
@@ -95,7 +105,6 @@ public class BuildUI : MonoBehaviour
             }
             
         }
-        
         water.text = "";
         food.text = "";
         mineral.text = "";
@@ -103,8 +112,9 @@ public class BuildUI : MonoBehaviour
         money.text = "";
         labor.text = "";
         product.text = "";
+        previewETPanel.SetActive(false);
     }
-    public void GeneratePreviewPanel(Dictionary<resource, int> previewRes,landBuilding buildingName)
+    public void GeneratePreviewPanel(Dictionary<resource, int> previewRes,landBuilding buildingName)//¥Í¦¨preview panel
     {
         if (resourcePanel.Count > 0)
         {
@@ -119,7 +129,7 @@ public class BuildUI : MonoBehaviour
         {
             GameObject panel = Instantiate(previewPanel) as GameObject;
             panel.SetActive(true);
-            panel.GetComponent<PreviewPanel>().SetText(resource.Key.ToString(),resource.Value.ToString());
+            panel.GetComponent<PreviewPanel>().SetText(resource.Key.ToString(),resource.Value.ToString(),Resource.allBuilding[buildingName][resource.Key].ToString());
             panel.transform.SetParent(previewPanel.transform.parent, false);
             resourcePanel.Add(panel);
         }
@@ -137,11 +147,39 @@ public class BuildUI : MonoBehaviour
                 product.text = dic.Value[resource.product].ToString();
             }
         }
-
-        
-
     }
 
+    public void GeneratePreviewETPanel(Dictionary<resource,int> preview, landBuilding build)
+    {
+        Dictionary<resource, int> temp = new Dictionary<resource, int>();
+        foreach(KeyValuePair<resource,int> resources in preview)
+        {
+            foreach(KeyValuePair<resource,int> add in Resource.allBuilding[build])
+            {
+                if(add.Key == resources.Key)
+                {
+                    temp.Add(resources.Key, resources.Value + add.Value);
+                }                
+            }
+        }
 
+        if (resourceETPanel.Count > 0)
+        {
+            foreach (GameObject panel in resourceETPanel)
+            {
+                Destroy(panel.gameObject);
+            }
+            resourceETPanel.Clear();
+        }
 
+        foreach (KeyValuePair<resource, int> resource in temp)
+        {
+            GameObject panel = Instantiate(previewETPanel) as GameObject;
+            panel.SetActive(true);
+            panel.GetComponent<PreviewPanel>().SetText(resource.Key.ToString(), resource.Value.ToString(),Resource.allBuilding[build][resource.Key].ToString());
+            panel.transform.SetParent(previewETPanel.transform.parent, false);
+            resourceETPanel.Add(panel);
+        }
+        Debug.Log(resourceETPanel.Count);
+    }
 }
