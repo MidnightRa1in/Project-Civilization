@@ -41,8 +41,8 @@ public class FinanceCenter : Building
             [resource.mineral] = 15,
             [resource.material] = 30,
             [resource.money] = 30,
-            [resource.labor] = 10,
-            [resource.product] = 15,
+            [resource.labor] = 15,
+            [resource.product] = 10,
         };
     }
     public override bool CheckBuildingAllowance(Land land)

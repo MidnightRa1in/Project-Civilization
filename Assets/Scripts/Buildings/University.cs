@@ -47,7 +47,7 @@ public class University : Building
             [resource.mineral] = 10,
             [resource.material] = 25,
             [resource.money] = 30,
-            [resource.labor] = 10,
+            [resource.labor] = 15,
             [resource.product] = 10,
         };
     }

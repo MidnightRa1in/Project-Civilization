@@ -7,7 +7,7 @@ public class Market : Building
 
     public Market()
     {
-        buildingName = landBuilding.MaterialFacility;
+        buildingName = landBuilding.Market;
         canBuildOn = new List<landStatus>()
         {
             landStatus.Desert,
@@ -41,7 +41,7 @@ public class Market : Building
             [resource.mineral] = 5,
             [resource.material] = 15,
             [resource.money] = 5,
-            [resource.labor] = 5,
+            [resource.labor] = 10,
             [resource.product] = 0,
         };
     }

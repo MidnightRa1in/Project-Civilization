@@ -43,8 +43,8 @@ public class Workshop : Building
             [resource.mineral] = 4,
             [resource.material] = 10,
             [resource.money] = 10,
-            [resource.labor] = 3,
-            [resource.product] = 0,
+            [resource.labor] = 5,
+            [resource.product] = 5,
         };
 
 }

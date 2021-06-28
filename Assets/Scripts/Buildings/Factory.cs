@@ -43,7 +43,7 @@ public class Factory : Building
             [resource.mineral] = 30,
             [resource.material] = 20,
             [resource.money] = 25,
-            [resource.labor] = 20,
+            [resource.labor] = 25,
             [resource.product] = 20,
         };
     }

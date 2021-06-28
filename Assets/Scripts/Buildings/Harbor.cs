@@ -36,7 +36,7 @@ public class Harbor : Building
             [resource.mineral] = 20,
             [resource.material] = 15,
             [resource.money] = 20,
-            [resource.labor] = 10,
+            [resource.labor] = 15,
             [resource.product] = 10,
         };
     }

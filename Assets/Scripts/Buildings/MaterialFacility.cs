@@ -41,8 +41,8 @@ public class MaterialFacility : Building
             [resource.mineral] = 3,
             [resource.material] = 10,
             [resource.money] = 5,
-            [resource.labor] = 3,
-            [resource.product] = 5,
+            [resource.labor] = 5,
+            [resource.product] = 0,
         };
     }
     public override bool CheckBuildingAllowance(Land land)

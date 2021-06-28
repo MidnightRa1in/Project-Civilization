@@ -33,7 +33,7 @@ public class Farm : Building
             [resource.material] = -1,
             [resource.money] = 0,
             [resource.labor] = 1,
-            [resource.product] = 0,
+            [resource.product] = 1,
 
         };
         cost = new Dictionary<resource, int>()
