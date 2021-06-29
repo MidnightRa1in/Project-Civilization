@@ -27,10 +27,14 @@ public class PreviewPanel : MonoBehaviour
         itemName.text = _itemName;
         itemChange.text = _itemChange;
     }
-    public void SetText(string _itemName, string _itemChange, string _itemChangeAmount)
+    public void SetText(string _itemName, string _itemChange, int _itemChangeAmount)
     {
         itemName.text = _itemName;
         itemChange.text = _itemChange;
+        if(_itemChangeAmount >= 0)
+        {
+            itemChangeAmount.text = "(+" + _itemChangeAmount + ")";
+        }
         itemChangeAmount.text = "(" + _itemChangeAmount + ")";
     }
 }

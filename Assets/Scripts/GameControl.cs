@@ -31,8 +31,6 @@ public class GameControl : MonoBehaviour
 
     [SerializeField]
     private Text countingRound;
-    [SerializeField]
-    private Text countingLands;
 
 
     public static int remainStep;
@@ -79,7 +77,6 @@ public class GameControl : MonoBehaviour
     void Update()
     {
         countingRound.text = "Round  " + rounds.ToString();
-        countingLands.text = player.DevelopedLands.Count.ToString() + "    Lands";
         if (chooseAction)
         {            
             ChooseAction();
@@ -164,6 +161,7 @@ public class GameControl : MonoBehaviour
         rounds++;
         player.CountResource();
         player.GetResource();
+        player.Inventory();
         
     }
 }

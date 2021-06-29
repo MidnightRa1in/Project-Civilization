@@ -134,7 +134,7 @@ public class BuildUI : MonoBehaviour
         {
             GameObject panel = Instantiate(previewPanel) as GameObject;
             panel.SetActive(true);
-            panel.GetComponent<PreviewPanel>().SetText(resource.Key.ToString(),resource.Value.ToString(),Resource.allBuilding[buildingName][resource.Key].ToString());
+            panel.GetComponent<PreviewPanel>().SetText(resource.Key.ToString(),resource.Value.ToString(), Resource.allBuilding[buildingName][resource.Key]);
             panel.transform.SetParent(previewPanel.transform.parent, false);
             resourcePanel.Add(panel);
         }
@@ -169,7 +169,7 @@ public class BuildUI : MonoBehaviour
         {
             GameObject panel = Instantiate(previewETPanel) as GameObject;
             panel.SetActive(true);
-            panel.GetComponent<PreviewPanel>().SetText(resource.Key.ToString(), resource.Value.ToString(),Resource.allBuilding[build][resource.Key].ToString());
+            panel.GetComponent<PreviewPanel>().SetText(resource.Key.ToString(), resource.Value.ToString(),Resource.allBuilding[build][resource.Key]);
             panel.transform.SetParent(previewETPanel.transform.parent, false);
             resourceETPanel.Add(panel);
         }
