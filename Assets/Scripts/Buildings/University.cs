@@ -37,18 +37,18 @@ public class University : Building
             [resource.material] = -1,
             [resource.money] = 1,
             [resource.labor] = 0,
-            [resource.product] = 2,
+            [resource.product] = 3,
 
         };
         cost = new Dictionary<resource, int>()
         {
-            [resource.water] = 30,
-            [resource.food] = 30,
-            [resource.mineral] = 10,
+            [resource.water] = 40,
+            [resource.food] = 50,
+            [resource.mineral] = 20,
             [resource.material] = 25,
-            [resource.money] = 30,
-            [resource.labor] = 15,
-            [resource.product] = 10,
+            [resource.money] = 40,
+            [resource.labor] = 20,
+            [resource.product] = 40,
         };
     }
 

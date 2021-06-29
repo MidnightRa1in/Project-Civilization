@@ -27,22 +27,22 @@ public class MineralFacility : Building
         {
             [resource.water] = -2,
             [resource.food] = -1,
-            [resource.mineral] = 3,
+            [resource.mineral] = 4,
             [resource.material] = -1,
-            [resource.money] = -1,
+            [resource.money] = 0,
             [resource.labor] = 0,
             [resource.product] = 2,
 
         };
         cost = new Dictionary<resource, int>()
         {
-            [resource.water] = 10,
-            [resource.food] = 5,
-            [resource.mineral] = 5,
-            [resource.material] = 10,
-            [resource.money] = 10,
-            [resource.labor] = 5,
-            [resource.product] = 5,
+            [resource.water] = 12,
+            [resource.food] = 12,
+            [resource.mineral] = 7,
+            [resource.material] = 8,
+            [resource.money] = 3,
+            [resource.labor] = 7,
+            [resource.product] = 2,
         };
     }
     public override bool CheckBuildingAllowance(Land land)

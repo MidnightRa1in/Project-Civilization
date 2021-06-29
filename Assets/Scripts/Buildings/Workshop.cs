@@ -30,7 +30,7 @@ public class Workshop : Building
             [resource.water] = -1,
             [resource.food] = -1,
             [resource.mineral] = -1,
-            [resource.material] = -2,
+            [resource.material] = -1,
             [resource.money] = 2,
             [resource.labor] = 0,
             [resource.product] = 3,
@@ -38,13 +38,13 @@ public class Workshop : Building
         };
         cost = new Dictionary<resource, int>()
         {
-            [resource.water] = 15,
+            [resource.water] = 10,
             [resource.food] = 10,
-            [resource.mineral] = 4,
-            [resource.material] = 10,
-            [resource.money] = 10,
+            [resource.mineral] = 10,
+            [resource.material] = 8,
+            [resource.money] = 5,
             [resource.labor] = 5,
-            [resource.product] = 5,
+            [resource.product] = 3,
         };
 
 }

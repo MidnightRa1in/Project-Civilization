@@ -38,9 +38,9 @@ public class Factory : Building
         };
         cost = new Dictionary<resource, int>()
         {
-            [resource.water] = 30,
-            [resource.food] = 25,
-            [resource.mineral] = 30,
+            [resource.water] = 35,
+            [resource.food] = 35,
+            [resource.mineral] = 35,
             [resource.material] = 20,
             [resource.money] = 25,
             [resource.labor] = 25,

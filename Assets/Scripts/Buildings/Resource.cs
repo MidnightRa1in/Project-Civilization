@@ -68,35 +68,35 @@ public static class Resource
     {
         [resource.water] = 1,
         [resource.food] = 1,
-        [resource.mineral] = 0,
-        [resource.material] = 0,
-        [resource.money] = 1,
-        [resource.labor] = 1,
-        [resource.product] = 0,
-
-    };
-
-    public static Dictionary<resource, int> City = new Dictionary<resource, int>()
-    {
-        [resource.water] = -1,
-        [resource.food] = -1,
-        [resource.mineral] = 0,
-        [resource.material] = -1,
+        [resource.mineral] = 1,
+        [resource.material] = 1,
         [resource.money] = 1,
         [resource.labor] = 1,
         [resource.product] = 1,
 
     };
 
+    public static Dictionary<resource, int> City = new Dictionary<resource, int>()
+    {
+        [resource.water] = 3,
+        [resource.food] = 3,
+        [resource.mineral] = 2,
+        [resource.material] = 2,
+        [resource.money] = 3,
+        [resource.labor] = 3,
+        [resource.product] = 3,
+
+    };
+
     public static Dictionary<resource, int> IndustrialArea = new Dictionary<resource, int>()
     {
-        [resource.water] = -1,
-        [resource.food] = -1,
-        [resource.mineral] = -1,
-        [resource.material] = -1,
-        [resource.money] = 2,
-        [resource.labor] = 0,
-        [resource.product] = 2,
+        [resource.water] = 1,
+        [resource.food] = 1,
+        [resource.mineral] = 4,
+        [resource.material] = 2,
+        [resource.money] = 1,
+        [resource.labor] = 1,
+        [resource.product] = 4,
 
     };
 
@@ -113,8 +113,8 @@ public static class Resource
     };
     public static Dictionary<resource, int> VillageCost = new Dictionary<resource, int>()
     {
-        [resource.water] = 1,
-        [resource.food] = 1,
+        [resource.water] = 2,
+        [resource.food] = 2,
         [resource.mineral] = 0,
         [resource.material] = 2,
         [resource.money] = 0,
@@ -125,37 +125,37 @@ public static class Resource
 
     public static Dictionary<resource, int> TownCost = new Dictionary<resource, int>()
     {
-        [resource.water] = 5,
-        [resource.food] = 5,
-        [resource.mineral] = 0,
-        [resource.material] = 6,
+        [resource.water] = 18,
+        [resource.food] = 18,
+        [resource.mineral] = 10,
+        [resource.material] = 12,
         [resource.money] = 3,
-        [resource.labor] = 2,
+        [resource.labor] = 7,
         [resource.product] = 0,
 
     };
 
     public static Dictionary<resource, int> CityCost = new Dictionary<resource, int>()
     {
-        [resource.water] = 15,
-        [resource.food] = 15,
-        [resource.mineral] = 5,
-        [resource.material] = 15,
-        [resource.money] = 10,
-        [resource.labor] = 8,
-        [resource.product] = 3,
+        [resource.water] = 50,
+        [resource.food] = 80,
+        [resource.mineral] = 50,
+        [resource.material] = 40,
+        [resource.money] = 40,
+        [resource.labor] = 40,
+        [resource.product] = 50,
 
     };
 
     public static Dictionary<resource, int> IndustrialAreaCost = new Dictionary<resource, int>()
     {
-        [resource.water] = 12,
-        [resource.food] = 12,
-        [resource.mineral] = 10,
-        [resource.material] = 15,
-        [resource.money] = 10,
-        [resource.labor] = 8,
-        [resource.product] = 3,
+        [resource.water] = 60,
+        [resource.food] = 70,
+        [resource.mineral] = 60,
+        [resource.material] = 30,
+        [resource.money] = 35,
+        [resource.labor] = 60,
+        [resource.product] = 30,
 
     };
 

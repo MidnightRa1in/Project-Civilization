@@ -36,13 +36,13 @@ public class FinanceCenter : Building
         };
         cost = new Dictionary<resource, int>()
         {
-            [resource.water] = 15,
-            [resource.food] = 10,
-            [resource.mineral] = 15,
-            [resource.material] = 30,
-            [resource.money] = 30,
-            [resource.labor] = 15,
-            [resource.product] = 10,
+            [resource.water] = 30,
+            [resource.food] = 40,
+            [resource.mineral] = 25,
+            [resource.material] = 25,
+            [resource.money] = 20,
+            [resource.labor] = 20,
+            [resource.product] = 20,
         };
     }
     public override bool CheckBuildingAllowance(Land land)

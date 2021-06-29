@@ -27,21 +27,21 @@ public class Farm : Building
         };
         resources = new Dictionary<resource, int>()
         {
-            [resource.water] = 1,
+            [resource.water] = 0,
             [resource.food] = 2,
             [resource.mineral] = 0,
-            [resource.material] = -1,
-            [resource.money] = 0,
+            [resource.material] = 0,
+            [resource.money] = 1,
             [resource.labor] = 1,
-            [resource.product] = 1,
+            [resource.product] = 0,
 
         };
         cost = new Dictionary<resource, int>()
         {
-            [resource.water] = 5,
-            [resource.food] = 5,
+            [resource.water] = 8,
+            [resource.food] = 8,
             [resource.mineral] = 0,
-            [resource.material] = 5,
+            [resource.material] = 6,
             [resource.money] = 0,
             [resource.labor] = 2,
             [resource.product] = 0,

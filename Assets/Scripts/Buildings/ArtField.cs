@@ -39,13 +39,13 @@ public class ArtField : Building
         };
         cost = new Dictionary<resource, int>()
         {
-            [resource.water] = 10,
-            [resource.food] = 15,
-            [resource.mineral] = 5,
-            [resource.material] = 15,
-            [resource.money] = 20,
-            [resource.labor] = 5,
-            [resource.product] = 10,
+            [resource.water] = 35,
+            [resource.food] = 45,
+            [resource.mineral] = 20,
+            [resource.material] = 25,
+            [resource.money] = 30,
+            [resource.labor] = 15,
+            [resource.product] = 30,
         };
     }
     public override bool CheckBuildingAllowance(Land land)

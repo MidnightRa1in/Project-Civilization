@@ -31,13 +31,13 @@ public class Harbor : Building
         };
         cost = new Dictionary<resource, int>()
         {
-            [resource.water] = 15,
-            [resource.food] = 10,
-            [resource.mineral] = 20,
-            [resource.material] = 15,
-            [resource.money] = 20,
-            [resource.labor] = 15,
-            [resource.product] = 10,
+            [resource.water] = 25,
+            [resource.food] = 45,
+            [resource.mineral] = 30,
+            [resource.material] = 25,
+            [resource.money] = 25,
+            [resource.labor] = 20,
+            [resource.product] = 15,
         };
     }
     public override bool CheckBuildingAllowance(Land land)

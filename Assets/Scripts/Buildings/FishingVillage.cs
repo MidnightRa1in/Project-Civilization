@@ -24,20 +24,20 @@ public class FishingVillage : Building
             [resource.water] = 1,
             [resource.food] = 1,
             [resource.mineral] = 0,
-            [resource.material] = -1,
-            [resource.money] = 0,
+            [resource.material] = 0,
+            [resource.money] = 1,
             [resource.labor] = 1,
-            [resource.product] = 1,
+            [resource.product] = 0,
 
         };
         cost = new Dictionary<resource, int>()
         {
-            [resource.water] = 5,
-            [resource.food] = 5,
+            [resource.water] = 6,
+            [resource.food] = 7,
             [resource.mineral] = 0,
-            [resource.material] = 5,
+            [resource.material] = 4,
             [resource.money] = 0,
-            [resource.labor] = 2,
+            [resource.labor] = 1,
             [resource.product] = 0,
         };
     }

@@ -31,17 +31,17 @@ public class Market : Building
             [resource.material] = -1,
             [resource.money] = 4,
             [resource.labor] = 0,
-            [resource.product] = 0,
+            [resource.product] = -1,
 
         };
         cost = new Dictionary<resource, int>()
         {
-            [resource.water] = 10,
-            [resource.food] = 10,
+            [resource.water] = 15,
+            [resource.food] = 15,
             [resource.mineral] = 5,
-            [resource.material] = 15,
+            [resource.material] = 10,
             [resource.money] = 5,
-            [resource.labor] = 10,
+            [resource.labor] = 3,
             [resource.product] = 0,
         };
     }

@@ -39,13 +39,13 @@ public class ReligiousField : Building
         };
         cost = new Dictionary<resource, int>()
         {
-            [resource.water] = 10,
-            [resource.food] = 20,
-            [resource.mineral] = 5,
-            [resource.material] = 15,
+            [resource.water] = 40,
+            [resource.food] = 60,
+            [resource.mineral] = 20,
+            [resource.material] = 20,
             [resource.money] = 30,
-            [resource.labor] = 10,
-            [resource.product] = 10,
+            [resource.labor] = 15,
+            [resource.product] = 15,
         };
     }
     public override bool CheckBuildingAllowance(Land land)
