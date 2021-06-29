@@ -20,7 +20,6 @@ public enum landStatus
     Swamp,
     Savanna,
     Mountain,
-    Cave,
 }
 public enum landBuilding
 {

@@ -15,6 +15,9 @@ public class Player : MonoBehaviour
     {
         get { return developedLands; }
     }
+    private Dictionary<landBuilding, int> playerBuilings;
+    private Dictionary<landDevelopment, int> playerDevelopments;
+    private Dictionary<landStatus, int> playerLandStatus;
     private Dictionary<resource, int> property;
     private Dictionary<resource, int> resourceEachTurn;
     public Dictionary<resource, int> Property
@@ -24,6 +27,18 @@ public class Player : MonoBehaviour
     public Dictionary<resource, int> ResourceEachTurn
     {
         get { return resourceEachTurn; }
+    }
+    public Dictionary<landBuilding, int> PlayerBuilings
+    {
+        get { return playerBuilings; }
+    }
+    public Dictionary<landDevelopment, int> PlayerDevelopments
+    {
+        get { return playerDevelopments; }
+    }
+    public Dictionary<landStatus, int> PlayerLandStatus
+    {
+        get { return playerLandStatus; }
     }
 
 
@@ -45,7 +60,10 @@ public class Player : MonoBehaviour
             [resource.product] = 2,
 
         };
+        ClearPlayerBuildings();
+        ClearPlyerDevelopments();
         ClearResource();
+        ClearPlayerLandStatus();
         
     }
 
@@ -89,6 +107,22 @@ public class Player : MonoBehaviour
             }
         }
         property = temp;
+    }
+
+    public void Inventory()//得到build及develop總值
+    {
+        ClearPlayerBuildings();
+        ClearPlyerDevelopments();
+        ClearPlayerLandStatus();
+        foreach (Land land in developedLands)
+        {
+            foreach(landBuilding build in land.buildings)
+            {
+                playerBuilings[build] += 1;
+            }
+            playerDevelopments[land.development.stage] += 1;
+            playerLandStatus[land.status] += 1;
+        }
     }
     private void ClearResource()//清空
     {
@@ -147,6 +181,54 @@ public class Player : MonoBehaviour
             }
         }
         property = temp;
+    }
+
+    private void ClearPlayerBuildings()
+    {
+        playerBuilings = new Dictionary<landBuilding, int>()
+        {
+            [landBuilding.MineralFacility] = 0,
+            [landBuilding.MaterialFacility] = 0,
+            [landBuilding.FishingVillage] = 0,
+            [landBuilding.Farm] = 0,
+            [landBuilding.Market] = 0,
+            [landBuilding.FinanceCenter] = 0,
+            [landBuilding.ArtField] = 0,
+            [landBuilding.ReligiousField] = 0,
+            [landBuilding.Workshop] = 0,
+            [landBuilding.Factory] = 0,
+            [landBuilding.Harbor] = 0,
+            [landBuilding.University] = 0
+        };
+    }
+    private void ClearPlyerDevelopments()
+    {
+        playerDevelopments = new Dictionary<landDevelopment, int>()
+        {
+            [landDevelopment.Undeveloped] = 0,
+            [landDevelopment.Village] = 0,
+            [landDevelopment.Town] = 0,
+            [landDevelopment.City] = 0,
+            [landDevelopment.IndustrialArea] = 0
+        };
+    }
+    private void ClearPlayerLandStatus()
+    {
+        playerLandStatus = new Dictionary<landStatus, int>()
+        {
+            [landStatus.Volcano] = 0,
+            [landStatus.Desert] = 0,
+            [landStatus.Forest] = 0,
+            [landStatus.Lake] = 0,
+            [landStatus.Riverside] = 0,
+            [landStatus.Plateau] = 0,
+            [landStatus.Plain] = 0,
+            [landStatus.Island] = 0,
+            [landStatus.Seashore] = 0,
+            [landStatus.Swamp] = 0,
+            [landStatus.Savanna] = 0,
+            [landStatus.Mountain] = 0,
+        };
     }
 
     

@@ -20,12 +20,6 @@ public class PreviewButton : MonoBehaviour
         player = GameObject.Find("Player").GetComponent<Player>();
 
     }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
     public void SetText(landBuilding newOne)
     {
         buttonName.text = newOne.ToString();
