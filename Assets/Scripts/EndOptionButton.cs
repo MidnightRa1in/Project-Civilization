@@ -21,6 +21,7 @@ public class EndOptionButton : MonoBehaviour
     public void buttonClicked()
     {
         choose.gameObject.SetActive(false);
+        GameControl.SetAction("End");
         GameControl.EndofTurn();
     }
 }

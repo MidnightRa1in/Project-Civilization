@@ -47,6 +47,8 @@ public class ConfirmDevelopButton : ConfirmButton
 
         }
         UI.gameObject.SetActive(false);
+        GameControl.SetAction("Develop");
+        GameControl.SetDescription(nextStage.ToString());
         GameControl.EndofTurn();
 
     }

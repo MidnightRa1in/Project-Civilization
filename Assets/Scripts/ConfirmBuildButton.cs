@@ -25,6 +25,8 @@ public class ConfirmBuildButton : ConfirmButton
         player.locationNow.buildings.Add(constructedBuilding);
         player.locationNow.buildingsCount++;
         UI.gameObject.SetActive(false);
+        GameControl.SetDescription(constructedBuilding.ToString());
+        GameControl.SetAction("Build");
         GameControl.EndofTurn();
 
     }

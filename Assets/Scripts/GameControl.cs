@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using System.IO;
 
 public class GameControl : MonoBehaviour
 {
@@ -48,7 +49,9 @@ public class GameControl : MonoBehaviour
     public static bool developingLand;
     public static bool buildingOptions;
 
-
+    private static string filePath;
+    private static string action;
+    private static string description;
 
 
 
@@ -66,6 +69,9 @@ public class GameControl : MonoBehaviour
         building = false;
         developingLand = false;
         buildingOptions = false;
+        filePath = Application.dataPath + "/player_log.txt";
+
+        ClearTxt();
         foreach (GameObject land in lands)
         {
             land.GetComponent<Land> ().landID = land.name;
@@ -90,6 +96,8 @@ public class GameControl : MonoBehaviour
                 player.moveAllowed = false;
                 
                 moving = false;
+                SetDescription(player.locationNow.name);
+                SetAction("Move");
                 EndofTurn();
 
             }
@@ -153,6 +161,62 @@ public class GameControl : MonoBehaviour
         developUI.Activated();
         developingLand = false;
     }
+
+    public static void SetAction(string act)
+    {
+        action = act;
+    }
+
+    public static void SetDescription(string des)
+    {
+        description = des;
+    }
+
+    private static string GetResourceEachTurnData()
+    {
+        Dictionary<resource, int> resET = player.ResourceEachTurn;
+        string etData = "";
+
+        foreach(KeyValuePair<resource, int> item in resET)
+        {
+            etData += item.Value + ",";
+        }
+
+        return etData;
+    }
+
+    private static string GetProp()
+    {
+        Dictionary<resource, int> prop = player.Property;
+        string propData = "";
+
+        foreach (KeyValuePair<resource, int> item in prop)
+        {
+            propData += item.Value + ",";
+        }
+
+        propData = propData.Remove(propData.Length - 1);
+
+        return propData;
+    }
+
+    private static void ClearTxt()
+    {
+        File.WriteAllText(filePath, "");
+    }
+    private static void WriteToTxtFile()
+    {
+        string header = "Round,Act,Des,W,F,Mi,Ma,Mo,La,P, ,W,F,Mi,Ma,Mo,La,P\n";
+
+        if (rounds == 1)
+        {
+            File.WriteAllText(filePath, header);
+        }
+
+        string row = rounds.ToString() + "," + action + "," + description + "," +
+            GetResourceEachTurnData() + "," + GetProp() + "\n";
+        File.AppendAllText(filePath, row);
+    }
     
     public static void EndofTurn()
     {
@@ -162,6 +226,6 @@ public class GameControl : MonoBehaviour
         player.CountResource();
         player.GetResource();
         player.Inventory();
-        
+        WriteToTxtFile();
     }
 }
