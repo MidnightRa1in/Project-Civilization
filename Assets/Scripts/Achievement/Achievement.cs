@@ -5,6 +5,38 @@ using UnityEngine;
 public enum Achievements
 {
     CenterOfWorld,
+    FinanceDistrict,
+    CapitalOfArt,
+    IndustrialAuthority,
+    HolyCity,
+    AcademyPalace,
+    Manufacturer,
+    TradeArea,
+
+    AgriculturalCountry,
+    OceanCulture,
+    CityStates,
+    HighPopulation,
+    MarketOrientaed,
+    CraftLand,
+
+    LandOfFertility,
+    FullOfMaterial,
+    AdvancedInIndustry,
+    AtmosphereOfArt,
+    FlourishingReligion,
+    HigherEducation,
+
+    OriginOfCivilization,
+    HighLand,
+    DesertClan,
+    Nomads,
+    IslandCountry,
+    GateOfHell,
+    LowLand,
+    GrasslandCommunity,
+    LandDiversity
+
 }
 public class Achievement
 {

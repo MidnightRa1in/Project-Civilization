@@ -36,9 +36,9 @@ public class NextStageButton : MonoBehaviour
     {
         confirm.gameObject.GetComponent<Button>().enabled = true;
         Dictionary<resource, int> next = new Dictionary<resource, int>();
-        Dictionary<resource, int> change = new Dictionary<resource, int>(); 
-        change =  Counting(next);
+        Dictionary<resource, int> change = new Dictionary<resource, int>();
         next = player.locationNow.PreviewDevelop(developName);
+        change =  Counting(next);        
         developUI.GeneratePreviewPanel(next,change);
         developUI.GenerateCostPanel(developName);
         if (CheckUseAllowance(developName) == false)

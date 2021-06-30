@@ -9,6 +9,18 @@ public class landAchievementButton : AchievementGenreButton
     {
         achievements = new List<Achievement>()
         {
+            new OriginOfCivilization(),
+            new HighLand(),
+            new DesertClan(),
+            new Nomads(),
+            new IslandCountry(),
+            new GateOfHell(),
+            new LowLand(),
+            new GrasslandCommunity(),
+            new LandDiversity(),
+
+
+
         };
     }
 
