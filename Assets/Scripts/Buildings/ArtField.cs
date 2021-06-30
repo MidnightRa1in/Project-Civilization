@@ -6,7 +6,7 @@ public class ArtField : Building
 {
     public ArtField()
     {
-        buildingName = landBuilding.Factory;
+        buildingName = landBuilding.ArtField;
         canBuildOn = new List<landStatus>()
         {
             landStatus.Volcano,
