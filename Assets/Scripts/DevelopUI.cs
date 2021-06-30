@@ -98,7 +98,7 @@ public class DevelopUI : MonoBehaviour
         {
             GameObject panel = Instantiate(previewPanel) as GameObject;
             panel.SetActive(true);
-            panel.GetComponent<PreviewPanel>().SetText(resource.Key.ToString(), resource.Value.ToString());
+            panel.GetComponent<PreviewPanel>().SetText(resource.Key.ToString(), resource.Value.ToString(), change[resource.Key]);
             panel.transform.SetParent(previewPanel.transform.parent, false);
             resourcePanel.Add(panel);
         }
@@ -123,8 +123,7 @@ public class DevelopUI : MonoBehaviour
         if (player.Property[resource.product] < Resource.allDevelopmentCost[name][resource.product]) product.color = Color.red;
 
     }
-
-    private void ResetText()
+    public void ResetText()
     {
         foreach (Text tex in texts)
         {

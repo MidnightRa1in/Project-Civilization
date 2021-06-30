@@ -33,8 +33,12 @@ public class PreviewPanel : MonoBehaviour
         itemChange.text = _itemChange;
         if(_itemChangeAmount >= 0)
         {
-            itemChangeAmount.text = "(+" + _itemChangeAmount + ")";
+            itemChangeAmount.text = "(" + "+" + _itemChangeAmount + ")";
         }
-        itemChangeAmount.text = "(" + _itemChangeAmount + ")";
+        else
+        {
+            itemChangeAmount.text = "(" + _itemChangeAmount + ")";
+        }
+        
     }
 }

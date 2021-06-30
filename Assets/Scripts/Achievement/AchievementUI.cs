@@ -39,7 +39,8 @@ public class AchievementUI : MonoBehaviour
 
     public void Activated()
     {
-
+        clearList(buttons);
+        clearList(panels);
     }
     public void GenerateAchievementButton(List<Achievement> list)
     {

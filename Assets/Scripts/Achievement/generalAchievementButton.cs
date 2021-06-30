@@ -11,6 +11,13 @@ public class generalAchievementButton : AchievementGenreButton
         achievements = new List<Achievement>()
         {
             new CenterOfWorld(),
+            new FinanceDistrict(),
+            new CapitalOfArt(),
+            new IndustrialAuthority(),
+            new HolyCity(),
+            new AcademyPalace(),
+            new Manufacturer(),
+            new TradeArea(),
         };
 
     }
