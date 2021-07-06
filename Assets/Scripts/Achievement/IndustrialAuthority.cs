@@ -35,6 +35,7 @@ public class IndustrialAuthority : Achievement
         };
 
         developedLandsReq = 5;
+        points = 100;
         achievementName = Achievements.IndustrialAuthority;
     }
 }

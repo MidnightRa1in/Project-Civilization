@@ -32,6 +32,7 @@ public class AcademyPalace : Achievement
         };
 
         developedLandsReq = new int();
+        points = 100;
         achievementName = Achievements.AcademyPalace;
     }
 }

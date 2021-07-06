@@ -10,8 +10,7 @@ public class BuildUI : MonoBehaviour
     private GameObject previewButton;
     [SerializeField]
     private GameObject previewPanel;
-    [SerializeField]
-    private GameObject previewETPanel;
+
 
     [SerializeField]
     private Text water;
@@ -31,7 +30,6 @@ public class BuildUI : MonoBehaviour
     private Player player;
     private List<GameObject> buttons;
     private List<GameObject> resourcePanel;
-    private List<GameObject> resourceETPanel;
     private List<Text> texts;
 
 
@@ -41,7 +39,6 @@ public class BuildUI : MonoBehaviour
         gameObject.SetActive(false);
         buttons = new List<GameObject>();
         resourcePanel = new List<GameObject>();
-        resourceETPanel = new List<GameObject>();
         texts = new List<Text>()
         {
             water,
@@ -78,14 +75,6 @@ public class BuildUI : MonoBehaviour
             }
             resourcePanel.Clear();
         }
-        if (resourceETPanel.Count > 0)
-        {
-            foreach (GameObject panel in resourceETPanel)
-            {
-                Destroy(panel.gameObject);
-            }
-            resourceETPanel.Clear();
-        }
 
         List<Building> building = new List<Building>()
         {
@@ -117,29 +106,6 @@ public class BuildUI : MonoBehaviour
             
         }
         ResetText();
-        previewETPanel.SetActive(false);
-    }
-    public void GeneratePreviewPanel(Dictionary<resource, int> previewRes,landBuilding buildingName)//¥Í¦¨preview panel
-    {
-        if (resourcePanel.Count > 0)
-        {
-            foreach (GameObject panel in resourcePanel)
-            {
-                Destroy(panel.gameObject);
-            }
-            resourcePanel.Clear();
-        }
-
-        foreach(KeyValuePair<resource, int> resource in previewRes)
-        {
-            GameObject panel = Instantiate(previewPanel) as GameObject;
-            panel.SetActive(true);
-            panel.GetComponent<PreviewPanel>().SetText(resource.Key.ToString(),resource.Value.ToString(), Resource.allBuilding[buildingName][resource.Key]);
-            panel.transform.SetParent(previewPanel.transform.parent, false);
-            resourcePanel.Add(panel);
-        }
-
-        
     }
 
     public void GeneratePreviewETPanel(Dictionary<resource,int> preview, landBuilding build)
@@ -156,22 +122,22 @@ public class BuildUI : MonoBehaviour
             }
         }
 
-        if (resourceETPanel.Count > 0)
+        if (resourcePanel.Count > 0)
         {
-            foreach (GameObject panel in resourceETPanel)
+            foreach (GameObject panel in resourcePanel)
             {
                 Destroy(panel.gameObject);
             }
-            resourceETPanel.Clear();
+            resourcePanel.Clear();
         }
 
         foreach (KeyValuePair<resource, int> resource in temp)
         {
-            GameObject panel = Instantiate(previewETPanel) as GameObject;
+            GameObject panel = Instantiate(previewPanel) as GameObject;
             panel.SetActive(true);
             panel.GetComponent<PreviewPanel>().SetText(resource.Key.ToString(), resource.Value.ToString(),Resource.allBuilding[build][resource.Key]);
-            panel.transform.SetParent(previewETPanel.transform.parent, false);
-            resourceETPanel.Add(panel);
+            panel.transform.SetParent(previewPanel.transform.parent, false);
+            resourcePanel.Add(panel);
         }
     }
     public void GenerateCostPanel(landBuilding name)

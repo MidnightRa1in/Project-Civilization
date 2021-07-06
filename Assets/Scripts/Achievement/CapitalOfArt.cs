@@ -30,6 +30,7 @@ public class CapitalOfArt : Achievement
         };
 
         developedLandsReq = new int();
+        points = 300;
         achievementName = Achievements.CapitalOfArt;
     }
 }

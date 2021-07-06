@@ -33,6 +33,7 @@ public class Manufacturer : Achievement
         };
 
         developedLandsReq = 7;
+        points = 200;
         achievementName = Achievements.Manufacturer;
     }
 }

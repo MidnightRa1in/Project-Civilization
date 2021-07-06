@@ -61,7 +61,6 @@ public class AchievementUI : MonoBehaviour
         achievementShowingNow.text = ach.AchievementName.ToString();
         foreach (KeyValuePair<landBuilding,int> build in ach.BuildingReq)
         {
-            Debug.Log(player.PlayerBuilings[build.Key]);
             GameObject panel = Instantiate(achievementConents) as GameObject;
             panel.SetActive(true);
             panel.GetComponent<AchievementPanel>().SetProgress(build.Key.ToString(),build.Value, player.PlayerBuilings[build.Key]);

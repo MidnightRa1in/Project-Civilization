@@ -30,6 +30,7 @@ public class HolyCity : Achievement
         };
 
         developedLandsReq = 10;
+        points = 100;
         achievementName = Achievements.HolyCity;
     }
 }

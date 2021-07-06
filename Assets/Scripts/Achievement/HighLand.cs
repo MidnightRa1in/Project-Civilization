@@ -24,6 +24,7 @@ public class HighLand : Achievement
         };
 
         developedLandsReq = new int();
+        points = 100;
         achievementName = Achievements.HighLand;
     }
 }

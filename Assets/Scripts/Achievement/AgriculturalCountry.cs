@@ -30,6 +30,7 @@ public class AgriculturalCountry : Achievement
         };
 
         developedLandsReq = new int();
+        points = 100;
         achievementName = Achievements.AgriculturalCountry;
     }
 }

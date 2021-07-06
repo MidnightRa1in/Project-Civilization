@@ -32,6 +32,7 @@ public class CraftLand : Achievement
         };
 
         developedLandsReq = new int();
+        points = 100;
         achievementName = Achievements.CraftLand;
     }
 }

@@ -37,6 +37,7 @@ public class CenterOfWorld : Achievement
         };
 
         developedLandsReq = 10;
+        points = 500;
         achievementName = Achievements.CenterOfWorld;
     }
 }

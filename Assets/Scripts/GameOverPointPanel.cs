@@ -1,13 +1,14 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
-public class PlayerPanelButton : MonoBehaviour
+public class GameOverPointPanel : MonoBehaviour
 {
     [SerializeField]
-    private GameObject showThisOne;
+    private Text achievementName;
     [SerializeField]
-    private GameObject hideThisOne;
+    private Text achievementPoints;
     // Start is called before the first frame update
     void Start()
     {
@@ -19,9 +20,9 @@ public class PlayerPanelButton : MonoBehaviour
     {
         
     }
-     public void buttonClicked()
+    public void SetText(Achievement ach, int point)
     {
-        hideThisOne.SetActive(false);
-        showThisOne.SetActive(true);
+        achievementName.text = ach.AchievementName.ToString();
+        achievementPoints.text = point.ToString();
     }
 }

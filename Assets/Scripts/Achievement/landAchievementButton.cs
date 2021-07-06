@@ -18,9 +18,6 @@ public class landAchievementButton : AchievementGenreButton
             new LowLand(),
             new GrasslandCommunity(),
             new LandDiversity(),
-
-
-
         };
     }
 

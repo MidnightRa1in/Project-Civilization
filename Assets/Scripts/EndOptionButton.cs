@@ -5,11 +5,13 @@ using UnityEngine;
 public class EndOptionButton : MonoBehaviour
 {
     [SerializeField]
-    private ChooseBuildDevUI choose;
+    private ChooseActionUI choose;
+    [SerializeField]
+    private PlayerPanel playerPanel;
     // Start is called before the first frame update
     void Start()
     {
-        
+        playerPanel = GameObject.FindWithTag("PlayerStatusUI").GetComponent<PlayerPanel>();
     }
 
     // Update is called once per frame
@@ -23,5 +25,6 @@ public class EndOptionButton : MonoBehaviour
         choose.gameObject.SetActive(false);
         GameControl.SetAction("End");
         GameControl.EndofTurn();
+        playerPanel.ReadDictionary();
     }
 }

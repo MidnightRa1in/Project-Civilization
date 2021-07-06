@@ -24,6 +24,7 @@ public class GrasslandCommunity : Achievement
         };
 
         developedLandsReq = new int();
+        points = 100;
         achievementName = Achievements.GrasslandCommunity;
     }
 }

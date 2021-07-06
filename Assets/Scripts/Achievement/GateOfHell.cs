@@ -24,6 +24,7 @@ public class GateOfHell : Achievement
         };
 
         developedLandsReq = new int();
+        points = 100;
         achievementName = Achievements.GateOfHell;
     }
 }

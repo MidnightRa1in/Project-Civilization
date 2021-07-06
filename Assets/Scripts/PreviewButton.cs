@@ -13,11 +13,13 @@ public class PreviewButton : MonoBehaviour
     private ConfirmButton confirm;
 
     private Player player;
+    private PlayerPanel playerPanel;
     private landBuilding buildingName;
     // Start is called before the first frame update
     void Start()
     {
         player = GameObject.Find("Player").GetComponent<Player>();
+        playerPanel = GameObject.Find("PlayerStatusUI").GetComponent<PlayerPanel>();
 
     }
     public void SetText(landBuilding newOne)
@@ -29,9 +31,20 @@ public class PreviewButton : MonoBehaviour
     public void buildingClicked()
     {
         confirm.gameObject.GetComponent<Button>().enabled = true;
-        Dictionary<resource, int> next = new Dictionary<resource, int>();
+        Dictionary<resource, int> next = new Dictionary<resource, int>();//土地的變化量
+        Dictionary<resource, int> playerNext = new Dictionary<resource, int>();//玩家的變化量
         next = player.locationNow.Preview(buildingName);
-        buildUI.GeneratePreviewPanel(next,buildingName);
+        foreach(KeyValuePair<resource,int> res in player.ResourceEachTurn)
+        {
+            foreach(KeyValuePair<resource, int> build in Resource.allBuilding[buildingName])
+            {
+                if(res.Key == build.Key)
+                {
+                    playerNext.Add(res.Key, res.Value + build.Value);
+                }
+            }
+        }
+        playerPanel.ReadDictionary(playerNext);
         buildUI.GeneratePreviewETPanel(player.ResourceEachTurn,buildingName);
         buildUI.GenerateCostPanel(buildingName);
         if(CheckUseAllowance(buildingName) == false)

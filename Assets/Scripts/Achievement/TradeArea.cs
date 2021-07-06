@@ -32,6 +32,7 @@ public class TradeArea : Achievement
         };
 
         developedLandsReq = 5;
+        points = 100;
         achievementName = Achievements.TradeArea;
     }
 }

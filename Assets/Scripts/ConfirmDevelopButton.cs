@@ -6,7 +6,9 @@ public class ConfirmDevelopButton : ConfirmButton
 {
     [SerializeField]
     private DevelopUI UI;
-    
+    [SerializeField]
+    private PlayerPanel playerPanel;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -50,6 +52,7 @@ public class ConfirmDevelopButton : ConfirmButton
         GameControl.SetAction("Develop");
         GameControl.SetDescription(nextStage.ToString());
         GameControl.EndofTurn();
+        playerPanel.ReadDictionary();
 
     }
 }

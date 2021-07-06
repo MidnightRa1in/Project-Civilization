@@ -27,6 +27,7 @@ public class LandOfFertility : Achievement
         };
 
         developedLandsReq = 8;
+        points = 100;
         achievementName = Achievements.LandOfFertility;
     }
 }

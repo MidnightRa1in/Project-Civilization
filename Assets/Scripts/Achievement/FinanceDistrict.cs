@@ -29,6 +29,7 @@ public class FinanceDistrict : Achievement
         };
 
         developedLandsReq = 5;
+        points = 100;
         achievementName = Achievements.FinanceDistrict;
     }
 }

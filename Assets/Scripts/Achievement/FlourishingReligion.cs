@@ -26,6 +26,7 @@ public class FlourishingReligion : Achievement
         };
 
         developedLandsReq = new int();
+        points = 100;
         achievementName = Achievements.FlourishingReligion;
     }
 }

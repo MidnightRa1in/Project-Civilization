@@ -25,6 +25,7 @@ public class OriginOfCivilization : Achievement
         };
 
         developedLandsReq = new int();
+        points = 200;
         achievementName = Achievements.OriginOfCivilization;
     }
 }

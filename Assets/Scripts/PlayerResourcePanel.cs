@@ -1,29 +1,70 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
-public class PlayerResourcePanel : PlayerPanel
+public class PlayerResourcePanel : MonoBehaviour
 {
+    [SerializeField]
+    private Text resourceName;
+    [SerializeField]
+    private Text propertyAmount;
+    [SerializeField]
+    private Text changeAmount;
+
+
+    ////testingIcon
+    //private Dictionary<resource, Sprite> resourceIcon;
+    //private Sprite water;
+    //private Sprite food;
+    //private Sprite mineral;
+    //private Sprite material;
+    //private Sprite money;
+    //private Sprite labor;
+    //private Sprite product;
+
     // Start is called before the first frame update
-    new void Start()
-    {
-        base.Start();
+    void Start()
+     {
+        //water = Resources.Load<Sprite>("ResourceIcon/Water");
+        //food = Resources.Load<Sprite>("ResourceIcon/Food");
+        //mineral = Resources.Load<Sprite>("ResourceIcon/Mineral");
+        //material = Resources.Load<Sprite>("ResourceIcon/Material");
+        //money = Resources.Load<Sprite>("ResourceIcon/Money");
+        //labor = Resources.Load<Sprite>("ResourceIcon/Labor");
+        //product = Resources.Load<Sprite>("ResourceIcon/Product");
+        //resourceIcon = new Dictionary<resource, Sprite>()
+        //{
+        //    [resource.water] = water,
+        //    [resource.food] = food,
+        //    [resource.mineral] = mineral,
+        //    [resource.material] = material,
+        //    [resource.money] = money,
+        //    [resource.labor] = labor,
+        //    [resource.product] = product,
+        //};
+        //test.sprite = resourceIcon[resource.labor];
+
+
     }
 
     // Update is called once per frame
-    new void Update()
+    void Update()
     {
-        base.Update();
     }
 
-    public override void ReadDictionary()
+    public void SetText(resource name, int property, int change)
     {
-        water.text = player.Property[resource.water].ToString();
-        food.text = player.Property[resource.food].ToString();
-        mineral.text = player.Property[resource.mineral].ToString();
-        material.text = player.Property[resource.material].ToString();
-        money.text = player.Property[resource.money].ToString();
-        labor.text = player.Property[resource.labor].ToString();
-        product.text = player.Property[resource.product].ToString();
+        
+        resourceName.text = name.ToString();
+        propertyAmount.text = property.ToString();
+        if (change >= 0)
+        {
+            changeAmount.text = "(+" + change.ToString() + ")";
+        }
+        else
+        {
+            changeAmount.text = "(" + change.ToString() + ")";
+        }       
     }
 }

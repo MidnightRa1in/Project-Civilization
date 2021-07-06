@@ -29,6 +29,7 @@ public class CityStates : Achievement
         };
 
         developedLandsReq = 10;
+        points = 100;
         achievementName = Achievements.CityStates;
     }
 }

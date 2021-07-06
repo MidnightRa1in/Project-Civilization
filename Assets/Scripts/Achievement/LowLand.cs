@@ -20,10 +20,11 @@ public class LowLand : Achievement
         };
         statusReq = new Dictionary<landStatus, int>()
         {
-            [landStatus.Swamp] = 3,
+            [landStatus.Swamp] = 1,
         };
 
         developedLandsReq = new int();
+        points = 100;
         achievementName = Achievements.LowLand;
     }
 }

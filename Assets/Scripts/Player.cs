@@ -45,7 +45,7 @@ public class Player : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {        
-        transform.position = Athena11AsSpawn.transform.position;
+        transform.position = Athena11AsSpawn.transform.position + new Vector3(0f,6f,0f);
         moveAllowed = false;
         locationNow = Athena11AsSpawn;
         developedLands = new List<Land>();

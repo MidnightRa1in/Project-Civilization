@@ -25,7 +25,7 @@ public class PlaceToGoUI : MonoBehaviour
 
     public void ButtonClicked(Land landToGo)
     {
-        playerToMove.transform.position = landToGo.transform.position;
+        playerToMove.transform.position = landToGo.transform.position + new Vector3(0f, 6f, 0f);
         playerToMove.locationNow = landToGo;
     }
     public void LoadPlayer(Player player)

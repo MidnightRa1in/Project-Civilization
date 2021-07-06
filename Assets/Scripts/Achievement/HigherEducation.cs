@@ -28,6 +28,7 @@ public class HigherEducation : Achievement
         };
 
         developedLandsReq = new int();
+        points = 200;
         achievementName = Achievements.HigherEducation;
     }
 }

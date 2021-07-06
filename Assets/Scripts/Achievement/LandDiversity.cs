@@ -31,6 +31,7 @@ public class LandDiversity : Achievement
         };
 
         developedLandsReq = new int();
+        points = 300;
         achievementName = Achievements.LandDiversity;
     }
 }

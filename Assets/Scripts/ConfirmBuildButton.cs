@@ -6,6 +6,8 @@ public class ConfirmBuildButton : ConfirmButton
 {
     [SerializeField]
     private BuildUI UI;
+    [SerializeField]
+    private PlayerPanel playerPanel;
     // Start is called before the first frame update
     void Start()
     {
@@ -28,6 +30,7 @@ public class ConfirmBuildButton : ConfirmButton
         GameControl.SetDescription(constructedBuilding.ToString());
         GameControl.SetAction("Build");
         GameControl.EndofTurn();
+        playerPanel.ReadDictionary();
 
     }
 }

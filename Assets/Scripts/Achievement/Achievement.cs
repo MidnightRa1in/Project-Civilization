@@ -47,6 +47,7 @@ public class Achievement
     protected Dictionary<landStatus, int> statusReq;
     protected int developedLandsReq;
     protected Achievements achievementName;
+    protected int points;
 
     public Dictionary<landBuilding, int> BuildingReq
     {
@@ -72,9 +73,34 @@ public class Achievement
     {
         get { return achievementName; }
     }
+    public int Points
+    {
+        get { return points; }
+    }
     public Achievement()
     {
-        player = GameObject.Find("Player").GetComponent<Player>();
+    }
+
+    public int Check(Player player)
+    {
+        foreach(KeyValuePair<landBuilding, int> build in buildingReq)
+        {
+            if (player.PlayerBuilings[build.Key] < build.Value) return 0;
+        }
+        foreach (KeyValuePair<landDevelopment, int> dev in developReq)
+        {
+            if (player.PlayerDevelopments[dev.Key] < dev.Value) return 0;
+        }
+        foreach (KeyValuePair<landStatus, int> sta in statusReq)
+        {
+            if (player.PlayerLandStatus[sta.Key] < sta.Value) return 0;
+        }
+        foreach (KeyValuePair<resource, int> res in resourceReq)
+        {
+            if (player.Property[res.Key] < res.Value) return 0;
+        }
+        if (player.DevelopedLands.Count < developedLandsReq) return 0;
+        return points;
     }
 
 }
